@@ -302,52 +302,11 @@
         [data-theme="dark"] ::-webkit-scrollbar-thumb { background:#1f3048; }
         [data-theme="dark-blue"] ::-webkit-scrollbar-thumb { background:#061c36; }
     </style>
-
-<style id="mobile-responsive-overrides">
-  html,body{max-width:100%;overflow-x:hidden}
-  #mobile-nav-btn,#mobile-nav-backdrop{display:none}
-  @media(max-width:767px){
-    body{min-height:100dvh;overflow-x:hidden}
-    #login-screen{padding:12px;overflow-y:auto;align-items:flex-start}
-    .login-card{margin:auto;padding:1.35rem;border-radius:18px;max-width:390px}
-    .login-card .mb-7{margin-bottom:1.25rem}.login-card .w-16{width:3.25rem;height:3.25rem}.login-card .text-2xl{font-size:1.25rem}
-    header{padding:10px 12px!important;align-items:stretch!important;gap:10px!important}
-    header>div:first-child{padding-left:44px;min-height:40px;align-items:center}
-    header>div:first-child h1{font-size:15px;line-height:1.2}header>div:first-child p{font-size:10px}
-    header>div:last-child{width:100%;overflow-x:auto;flex-wrap:nowrap!important;justify-content:flex-start;gap:8px!important;padding:7px!important;-webkit-overflow-scrolling:touch}
-    header>div:last-child>div{flex-shrink:0}.preset-btn{min-height:34px;padding-left:10px!important;padding-right:10px!important}
-    #customDateRow input{width:125px}#activeDateLabel{display:none!important}
-    section.bg-gradient-to-r{padding:10px 12px!important;align-items:stretch!important}
-    section.bg-gradient-to-r>div:last-child{display:grid!important;grid-template-columns:1fr;gap:8px!important}
-    section.bg-gradient-to-r>div:last-child>div{width:100%;min-width:0;justify-content:space-between}
-    #mobile-nav-btn{display:flex;position:fixed;left:10px;top:11px;z-index:70;width:36px;height:36px;align-items:center;justify-content:center;border:0;border-radius:10px;background:#0284c7;color:#fff;box-shadow:0 4px 14px rgba(2,132,199,.35)}
-    #mobile-nav-backdrop{position:fixed;inset:0;z-index:54;background:rgba(15,23,42,.55);backdrop-filter:blur(2px)}
-    #mobile-nav-backdrop.open{display:block}
-    #sidebar{display:flex!important;position:fixed!important;z-index:60;left:0;top:0;bottom:0;width:min(84vw,300px)!important;padding:14px!important;transform:translateX(-105%);transition:transform .22s ease;box-shadow:10px 0 35px rgba(15,23,42,.22);overflow-y:auto}
-    #sidebar.mobile-open{transform:translateX(0)}#sidebar-toggle-btn{display:none!important}
-    main{padding:12px!important;max-width:100%!important;overflow-x:hidden!important;gap:14px!important}
-    .tab-content{max-width:100%;gap:14px!important}.tab-content>.grid{gap:10px!important}
-    #tab-dashboard>.grid:first-child{grid-template-columns:repeat(2,minmax(0,1fr))}
-    #tab-dashboard>.grid:first-child>div{padding:12px!important;min-width:0}#tab-dashboard>.grid:first-child .text-xl{font-size:1rem;overflow-wrap:anywhere}
-    .analysis-btn{padding:8px 10px!important}.inline-flex{max-width:100%}.inline-flex button{white-space:nowrap}
-    #cost-panel .flex,#revenue-panel .flex{align-items:stretch}#cost-panel select,#revenue-panel select{max-width:55vw}
-    table{min-width:680px}.overflow-x-auto{overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch}
-    #aging-ngn-table,#aging-usd-table{min-width:850px}
-    canvas{max-width:100%!important}.h-64{height:230px!important}.h-72{height:250px!important}
-    #tab-income-statement .p-5,#tab-forecast .p-5{padding:14px!important}
-    #drilldownModal,#userModal{padding:8px!important}#drilldownModal>div{max-height:94dvh!important}
-    #drilldownModal>div>div:first-child{flex-direction:column;align-items:stretch!important;padding:12px!important}
-    #drilldownModal>div>div:first-child>div:last-child{flex-wrap:wrap;width:100%}#modalSearch{width:100%!important}
-    #drilldownModal>div>div:first-child>div:last-child .relative{flex:1;min-width:160px}
-    .fz-wrap{max-width:100%}.fz-dropdown{max-width:calc(100vw - 40px)}
-    button,input,select{touch-action:manipulation}
-  }
-  @media(max-width:380px){#tab-dashboard>.grid:first-child{grid-template-columns:1fr}.login-card{padding:1.1rem}.login-theme-pill{padding:4px 9px}}
-</style></head>
+</head>
 <body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
 
 <!-- ===== LOGIN SCREEN ===== -->
-<div id="login-screen" data-login-theme="dark">
+<div id="login-screen" data-login-theme="light">
     <div class="login-card">
         <!-- Top row: theme toggle + close button -->
         <div class="flex items-center justify-between mb-5">
@@ -2576,26 +2535,5 @@ function importRevenueWorkbook(input){
     reader.readAsArrayBuffer(input.files[0]);
 }
 </script>
-
-<script id="mobile-responsive-behavior">
-(function(){
-  function setLoginTheme(theme){
-    var screen=document.getElementById('login-screen'); if(!screen)return;
-    screen.setAttribute('data-login-theme',theme); localStorage.setItem('mtcc_login_theme',theme);
-    var light=document.getElementById('login-pill-light'),dark=document.getElementById('login-pill-dark');
-    if(light)light.className='login-theme-pill'+(theme==='light'?' active-light':'');
-    if(dark)dark.className='login-theme-pill'+(theme==='dark'?' active-dark':'');
-  }
-  window.setLoginTheme=setLoginTheme;
-  function closeMobileNav(){var s=document.getElementById('sidebar'),b=document.getElementById('mobile-nav-backdrop');if(s)s.classList.remove('mobile-open');if(b)b.classList.remove('open');}
-  function toggleMobileNav(){var s=document.getElementById('sidebar'),b=document.getElementById('mobile-nav-backdrop');if(!s||!b)return;var open=s.classList.toggle('mobile-open');b.classList.toggle('open',open);}
-  window.addEventListener('DOMContentLoaded',function(){
-    setLoginTheme(localStorage.getItem('mtcc_login_theme')||'dark');
-    var btn=document.createElement('button');btn.id='mobile-nav-btn';btn.title='Open navigation';btn.setAttribute('aria-label','Open navigation');btn.innerHTML='<i class="fa-solid fa-bars"></i>';btn.onclick=toggleMobileNav;document.body.appendChild(btn);
-    var back=document.createElement('div');back.id='mobile-nav-backdrop';back.onclick=closeMobileNav;document.body.appendChild(back);
-    document.querySelectorAll('#sidebar .snav').forEach(function(item){item.addEventListener('click',closeMobileNav)});
-    window.addEventListener('resize',function(){if(innerWidth>=768)closeMobileNav()});
-  });
-})();
-</script></body>
+</body>
 </html>
