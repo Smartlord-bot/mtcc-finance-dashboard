@@ -1744,17 +1744,8 @@
 </section>
 
 <!-- ===== TAB: MARGINS ===== -->
-<section id="tab-margins" class="tab-content bg-white p-6 rounded-xl border border-slate-200 hidden">
-    <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
-        <div>
-            <h3 class="text-xs font-bold uppercase text-slate-400">Margins Analysis</h3>
-            <p class="text-[10px] text-slate-400 mt-0.5">Gross margin, EBITDA margin &amp; profitability ratios</p>
-        </div>
-        <span id="margins-basis-badge" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold border bg-sky-50 border-sky-200 text-sky-700">
-            <i class="fa-solid fa-coins text-[9px]"></i> Cash Basis
-        </span>
-    </div>
-    <div class="h-32 flex items-center justify-center text-slate-400 text-xs">Awaiting configuration</div>
+<section id="tab-margins" class="tab-content bg-white p-3 sm:p-6 rounded-xl border border-slate-200 hidden">
+    <div id="margins-insights-root"></div>
 </section>
 
 <!-- ===== TAB: FORECAST RUNWAY ===== -->
@@ -5527,5 +5518,1254 @@ function exportReconReportPDF(){
     window.addEventListener('resize',function(){if(innerWidth>=768)closeMobileNav()});
   });
 })();
-</script></body>
+</script>
+<style data-inlined-from="margins-insights.css">
+.mi-shell{width:100%;max-width:100%;min-width:0;color:#334155;font-size:11px}.mi-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:12px}.mi-title{font-size:13px;font-weight:800;color:#475569;text-transform:uppercase}.mi-sub{font-size:10px;color:#94a3b8;margin-top:2px}.mi-badge{display:inline-flex;align-items:center;gap:5px;padding:5px 9px;border:1px solid #bae6fd;border-radius:999px;background:#f0f9ff;color:#0369a1;font-size:9px;font-weight:800;white-space:nowrap}.mi-tabs{display:flex;overflow-x:auto;overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch;border:1px solid #e2e8f0;border-radius:10px 10px 0 0;background:#f8fafc;scrollbar-width:thin}.mi-tab{flex:0 0 auto;min-height:40px;padding:9px 12px;border:0;border-bottom:2px solid transparent;background:transparent;color:#64748b;font-size:10px;font-weight:700;white-space:nowrap;cursor:pointer}.mi-tab:hover{background:#f0f9ff;color:#0369a1}.mi-tab.active{border-bottom-color:#0284c7;background:#fff;color:#0369a1}.mi-tab:focus-visible,.mi-search:focus-visible{outline:2px solid #38bdf8;outline-offset:-2px}.mi-toolbar{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;padding:12px;border:1px solid #e2e8f0;border-top:0;background:#fff}.mi-label{display:block;margin-bottom:4px;color:#64748b;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.05em}.mi-search{width:100%;height:36px;padding:7px 10px;border:1px solid #cbd5e1;border-radius:8px;background:#f8fafc;color:#334155;font:inherit}.mi-question-menu{display:none;max-height:240px;overflow-y:auto;margin-top:5px;border:1px solid #e2e8f0;border-radius:8px;background:#fff;box-shadow:0 10px 25px rgba(15,23,42,.1)}.mi-question-menu.open{display:block}.mi-q{display:block;width:100%;padding:9px 10px;border:0;border-bottom:1px solid #f1f5f9;background:#fff;color:#475569;text-align:left;font-size:10px;line-height:1.35;cursor:pointer}.mi-q:hover,.mi-q:focus{background:#f0f9ff;color:#0369a1}.mi-context{display:flex;flex-wrap:wrap;gap:6px;align-items:center;color:#94a3b8;font-size:9px}.mi-chip{padding:4px 7px;border-radius:999px;background:#f1f5f9;color:#64748b;font-weight:700}.mi-output{margin-top:12px}.mi-output-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:10px}.mi-output-title{font-size:12px;font-weight:800;color:#334155}.mi-status{padding:4px 8px;border-radius:999px;background:#ecfdf5;color:#047857;font-size:9px;font-weight:800;white-space:nowrap}.mi-status.gap{background:#fffbeb;color:#b45309}.mi-summary{padding:12px;border:1px solid #bae6fd;border-radius:10px;background:#f0f9ff;color:#334155;font-size:11px;line-height:1.55}.mi-kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}.mi-kpi{min-width:0;padding:11px;border:1px solid #e2e8f0;border-radius:10px;background:#fff}.mi-kpi-label{color:#94a3b8;font-size:8px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}.mi-kpi-value{margin-top:5px;color:#0f172a;font-size:15px;font-weight:900;overflow-wrap:anywhere}.mi-kpi-note{margin-top:3px;color:#64748b;font-size:9px}.mi-chart{margin-top:10px;padding:12px;border:1px solid #e2e8f0;border-radius:10px;background:#fff}.mi-chart-title{margin-bottom:10px;color:#475569;font-size:10px;font-weight:800;text-transform:uppercase}.mi-bars{display:flex;flex-direction:column;gap:8px}.mi-bar-row{display:grid;grid-template-columns:minmax(85px,1.2fr) minmax(100px,3fr) auto;align-items:center;gap:8px}.mi-bar-label{overflow:hidden;color:#64748b;font-size:9px;text-overflow:ellipsis;white-space:nowrap}.mi-track{height:8px;overflow:hidden;border-radius:999px;background:#e2e8f0}.mi-fill{height:100%;min-width:2px;border-radius:999px;background:#0284c7}.mi-bar-value{color:#334155;font-size:9px;font-weight:800;text-align:right}.mi-empty{padding:28px 14px;border:1px dashed #cbd5e1;border-radius:10px;color:#94a3b8;text-align:center}.mi-follow{margin-top:10px;padding:10px;border-left:3px solid #f59e0b;border-radius:0 8px 8px 0;background:#fffbeb;color:#78350f;font-size:10px}.mi-follow strong{display:block;margin-bottom:4px}.mi-follow ul{margin:0;padding-left:16px}.mi-follow li+li{margin-top:3px}
+@media(min-width:640px){.mi-toolbar{grid-template-columns:minmax(320px,1fr) auto;align-items:start}.mi-kpis{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:420px){.mi-head,.mi-output-head{display:block}.mi-badge,.mi-status{margin-top:7px}.mi-bar-row{grid-template-columns:minmax(70px,1fr) minmax(70px,1.7fr) auto}}
+[data-theme="dark"] .mi-shell,[data-theme="dark-blue"] .mi-shell{color:#c8d8ea}.dark .mi-shell{color:#c8d8ea}[data-theme="dark"] .mi-title,[data-theme="dark"] .mi-output-title,[data-theme="dark-blue"] .mi-title,[data-theme="dark-blue"] .mi-output-title{color:#dde6f0}[data-theme="dark"] .mi-tabs,[data-theme="dark"] .mi-toolbar,[data-theme="dark"] .mi-kpi,[data-theme="dark"] .mi-chart,[data-theme="dark"] .mi-question-menu,[data-theme="dark"] .mi-q,[data-theme="dark-blue"] .mi-tabs,[data-theme="dark-blue"] .mi-toolbar,[data-theme="dark-blue"] .mi-kpi,[data-theme="dark-blue"] .mi-chart,[data-theme="dark-blue"] .mi-question-menu,[data-theme="dark-blue"] .mi-q{background:#16222f;border-color:#1f3048}[data-theme="dark"] .mi-tab.active,[data-theme="dark-blue"] .mi-tab.active{background:#16222f;color:#38bdf8}[data-theme="dark"] .mi-search,[data-theme="dark-blue"] .mi-search{background:#1a2636;border-color:#1f3048;color:#dde6f0}[data-theme="dark"] .mi-summary,[data-theme="dark-blue"] .mi-summary{background:rgba(14,165,233,.1);border-color:#1f3048;color:#c8d8ea}[data-theme="dark"] .mi-kpi-value,[data-theme="dark-blue"] .mi-kpi-value{color:#e8f0fa}[data-theme="dark"] .mi-q:hover,[data-theme="dark-blue"] .mi-q:hover{background:#1a2636}
+</style>
+<style data-inlined-from="margins-insights-modern.css">
+/* An isolated presentation layer; the dashboard shell and page background stay unchanged. */
+.mi-shell {
+  --mi-ink:#17233e;
+  --mi-muted:#67738e;
+  --mi-edge:rgba(139,155,193,.22);
+  color:var(--mi-ink);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:13px;
+  line-height:1.5;
+}
+.mi-shell * { box-sizing:border-box; }
+.mi-head { align-items:center; gap:16px; margin-bottom:24px; }
+.mi-overline,.mi-chart-eyebrow,.mi-summary-label {
+  color:#8674c4; font-size:10px; font-weight:850; letter-spacing:.16em;
+}
+.mi-overline { margin-bottom:6px; }
+.mi-title { font-size:clamp(23px,3vw,32px); line-height:1.15; font-weight:850; letter-spacing:-.045em; color:var(--mi-ink); text-transform:none; }
+.mi-title-dot { color:#9d76e5; }
+.mi-sub { margin-top:7px; color:var(--mi-muted); font-size:12px; }
+.mi-badge {
+  padding:8px 12px; color:#6052a1; font-size:10px;
+  border:1px solid #dcd3fa; background:rgba(241,235,255,.75);
+  box-shadow:0 6px 18px rgba(131,94,203,.08);
+  backdrop-filter:blur(12px);
+}
+.mi-tabs {
+  gap:5px; padding:6px; border:1px solid var(--mi-edge);
+  border-radius:15px 15px 0 0;
+  background:linear-gradient(125deg,rgba(245,242,255,.9),rgba(234,250,248,.65),rgba(255,244,239,.75));
+}
+.mi-tab {
+  border:0; border-radius:10px; padding:10px 13px; min-height:43px;
+  color:#65718a; font-size:11px; font-weight:750;
+  transition:transform .26s cubic-bezier(.2,1.5,.35,1),background .24s,color .24s,box-shadow .24s;
+}
+.mi-tab:hover { transform:translateY(-2px); background:rgba(255,255,255,.8); color:#654cac; }
+.mi-tab.active,.mi-tab.active:hover {
+  color:#fff; border:0;
+  background:linear-gradient(120deg,#8371d8,#639cde);
+  box-shadow:0 7px 19px rgba(116,112,211,.24);
+}
+.mi-tab:focus-visible,.mi-open:focus-visible,.mi-q:focus-visible { outline:2px solid #8d77dd; outline-offset:2px; }
+.mi-toolbar {
+  position:relative; gap:15px; padding:19px;
+  border:1px solid var(--mi-edge); border-top:0;
+  border-radius:0 0 16px 16px;
+  background:linear-gradient(110deg,rgba(255,255,255,.94),rgba(248,249,255,.9));
+}
+.mi-search-wrap { position:relative; min-width:0; z-index:5; }
+.mi-label { margin-bottom:8px; font-size:10px; color:#837e9e; letter-spacing:.11em; }
+.mi-search-control {
+  display:flex; align-items:center; gap:11px; min-height:48px;
+  padding:5px 6px 5px 15px; border:1px solid #d7dcf1; border-radius:13px;
+  color:#9385c1; background:rgba(255,255,255,.92);
+  transition:border .26s,box-shadow .26s,transform .32s cubic-bezier(.2,1.4,.35,1);
+}
+.mi-search-control:focus-within {
+  border-color:#a4a0e6;
+  box-shadow:0 0 0 4px rgba(174,156,242,.18),0 9px 25px rgba(124,113,211,.11);
+  transform:scale(1.008);
+}
+.mi-search { min-width:0; flex:1; height:36px; padding:4px 0; outline:0; border:0; background:transparent; color:var(--mi-ink); font-size:12px; box-shadow:none; }
+.mi-search:focus-visible { outline:0; }
+.mi-search::placeholder { color:#9aa3b8; }
+.mi-open {
+  flex:0 0 40px; height:37px; display:grid; place-items:center;
+  border:0; border-radius:9px; color:#fff; cursor:pointer;
+  background:linear-gradient(120deg,#8e74dc,#64a7e4);
+  box-shadow:0 5px 14px rgba(116,111,213,.21);
+  transition:transform .28s cubic-bezier(.2,1.6,.35,1),filter .25s,box-shadow .25s;
+}
+.mi-open:hover:not(:disabled) { transform:translateY(-2px) scale(1.05); filter:brightness(1.11); box-shadow:0 8px 21px rgba(116,111,213,.38); }
+.mi-open:active { transform:scale(.96); }
+.mi-open[aria-expanded="true"] i { transform:rotate(180deg); }
+.mi-open i { transition:transform .28s; }
+.mi-open:disabled { opacity:.45; cursor:not-allowed; }
+.mi-question-menu {
+  display:block; position:absolute; top:100%; left:0; right:0;
+  z-index:15; margin-top:8px; max-height:0; overflow-y:auto;
+  padding:0 5px; visibility:hidden; pointer-events:none;
+  border:1px solid transparent; border-radius:14px;
+  background:rgba(255,255,255,.96); backdrop-filter:blur(22px);
+  opacity:0; transform:translateY(-8px) scale(.98);
+  box-shadow:0 20px 45px rgba(60,55,113,.16);
+  transition:max-height .35s ease,opacity .28s,transform .35s cubic-bezier(.2,1.2,.35,1),visibility .28s;
+}
+.mi-question-menu.open {
+  max-height:295px; padding:5px; visibility:visible; pointer-events:auto;
+  border-color:#e0ddf3; opacity:1; transform:translateY(0) scale(1);
+}
+.mi-q {
+  border:0; border-radius:9px; margin:2px 0; padding:11px 12px;
+  font-size:11px; line-height:1.4; color:#4b5875;
+  transition:background .22s,color .22s,transform .25s cubic-bezier(.2,1.4,.35,1);
+}
+.mi-q:hover,.mi-q:focus-visible { transform:translateX(3px); background:linear-gradient(100deg,#f0eafe,#eaf8f7); color:#604caa; }
+.mi-menu-empty { padding:18px; text-align:center; color:#8390a8; }
+.mi-context { padding-top:17px; gap:7px; justify-content:flex-end; }
+.mi-chip { padding:6px 10px; border:1px solid #e5e6f3; background:rgba(248,249,255,.92); color:#65708d; font-size:10px; }
+.mi-live { background:#e8f9f0; color:#267d5e; border-color:#c9eedd; }
+.mi-live-dot,.mi-status-dot { display:inline-block; width:6px; height:6px; border-radius:50%; margin-right:3px; background:#53c995; box-shadow:0 0 0 3px rgba(83,201,149,.15); vertical-align:middle; }
+.mi-output { margin-top:24px; }
+.mi-output-head { align-items:center; margin-bottom:15px; }
+.mi-output-head .mi-label { color:#9a77d2; }
+.mi-output-title { margin:0; color:var(--mi-ink); font-size:clamp(17px,2.3vw,22px); font-weight:790; letter-spacing:-.028em; line-height:1.35; }
+.mi-status { flex:0 0 auto; border:1px solid #c9eedd; background:#e9faf2; color:#237c60; padding:7px 11px; font-size:10px; }
+.mi-status.gap { border-color:#f8dcbc; background:#fff4e7; color:#a45d29; }
+.mi-status.gap .mi-status-dot { background:#edaa5f; box-shadow:0 0 0 3px rgba(237,170,95,.17); }
+.mi-summary {
+  display:flex; gap:14px; align-items:flex-start;
+  padding:18px 20px; border:1px solid #e5ddfc; border-radius:17px;
+  background:linear-gradient(116deg,rgba(242,237,255,.86),rgba(231,249,251,.79),rgba(255,245,238,.78));
+  color:#39435e; box-shadow:0 8px 28px rgba(100,101,166,.06);
+  backdrop-filter:blur(15px); font-size:12px; line-height:1.6;
+}
+.mi-summary-icon {
+  flex:0 0 34px; width:34px; height:34px; display:grid; place-items:center; border-radius:11px;
+  color:#fff; background:linear-gradient(135deg,#ac89e8,#6aafde);
+  box-shadow:0 5px 13px rgba(132,118,212,.25);
+}
+.mi-summary p { margin:4px 0 0; }
+.mi-summary-gap { border-color:#f5dfbd; background:linear-gradient(120deg,#fff7e9,#fff4ef); }
+.mi-summary-gap .mi-summary-icon { background:linear-gradient(135deg,#edb867,#e89683); }
+.mi-kpis { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:13px; margin-top:16px; }
+.mi-kpi {
+  --tone:#8c78dc; --glow:rgba(146,110,226,.24);
+  position:relative; isolation:isolate; min-width:0; min-height:154px; overflow:hidden;
+  display:flex; align-items:center; padding:22px 23px;
+  border:1px solid rgba(173,155,226,.26); border-radius:18px;
+  background:linear-gradient(135deg,rgba(247,242,255,.92),rgba(255,255,255,.78));
+  box-shadow:0 10px 25px rgba(58,56,106,.06);
+  backdrop-filter:blur(17px); -webkit-backdrop-filter:blur(17px);
+  transition:transform .36s cubic-bezier(.2,1.5,.35,1),box-shadow .36s,border-color .3s;
+}
+.mi-kpi::before { content:""; position:absolute; left:0; top:16px; bottom:16px; width:4px; border-radius:0 4px 4px 0; background:var(--tone); }
+.mi-kpi::after { content:""; position:absolute; z-index:-1; width:160px; height:160px; border-radius:50%; top:-95px; right:-46px; background:var(--glow); filter:blur(38px); opacity:.6; }
+.mi-kpi:hover { transform:translateY(-5px) scale(1.012); border-color:var(--tone); box-shadow:0 17px 34px var(--glow); }
+.mi-tone-1 { --tone:#9274dc; --glow:rgba(161,126,228,.28); }
+.mi-tone-2 { --tone:#31b990; --glow:rgba(76,215,169,.25); background:linear-gradient(135deg,rgba(232,251,243,.92),rgba(255,255,255,.78)); border-color:rgba(108,210,169,.25); }
+.mi-tone-3 { --tone:#f0a678; --glow:rgba(247,171,128,.3); background:linear-gradient(135deg,rgba(255,242,232,.93),rgba(255,255,255,.78)); border-color:rgba(249,178,141,.25); }
+.mi-tone-4 { --tone:#5aa9df; --glow:rgba(104,176,233,.27); background:linear-gradient(135deg,rgba(235,246,255,.93),rgba(255,255,255,.78)); border-color:rgba(111,184,235,.27); }
+.mi-kpi-label { color:#67748e; font-size:11px; font-weight:800; letter-spacing:.09em; line-height:1.35; }
+.mi-kpi-value { margin-top:13px; color:var(--tone); font-size:clamp(23px,3vw,32px); font-weight:850; letter-spacing:-.045em; line-height:1.16; overflow-wrap:anywhere; }
+.mi-kpi-note { margin-top:12px; color:#66728c; font-size:11px; font-weight:550; line-height:1.4; }
+.mi-chart {
+  padding:22px; margin-top:16px;
+  border:1px solid rgba(180,189,220,.3); border-radius:18px;
+  background:linear-gradient(130deg,rgba(255,255,255,.94),rgba(248,250,255,.85));
+  box-shadow:0 10px 28px rgba(58,56,106,.05);
+  backdrop-filter:blur(17px); -webkit-backdrop-filter:blur(17px);
+}
+.mi-chart-heading { display:flex; align-items:end; justify-content:space-between; gap:10px; margin-bottom:18px; }
+.mi-chart-eyebrow { color:#9d80d5; font-size:9px; }
+.mi-chart-title { margin:4px 0 0; color:var(--mi-ink); font-size:17px; font-weight:800; letter-spacing:-.025em; text-transform:none; }
+.mi-chart-scale { color:#96a0b1; font-size:10px; text-align:right; }
+.mi-bars { gap:18px; }
+.mi-bar-row { display:block; min-width:0; }
+.mi-bar-top { display:flex; align-items:baseline; justify-content:space-between; gap:10px; margin-bottom:8px; }
+.mi-bar-label { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:#3d4860; font-size:12px; font-weight:650; }
+.mi-bar-value { flex:0 0 auto; color:#53617c; font-size:12px; font-weight:800; }
+.mi-track { width:100%; height:13px; background:#e9edf8; border-radius:99px; overflow:hidden; }
+.mi-fill { height:100%; min-width:0; border-radius:99px; transition:width .45s cubic-bezier(.2,1.2,.35,1); }
+.mi-bar-tone-1 { background:linear-gradient(90deg,#a789ed,#7e9eea); }
+.mi-bar-tone-2 { background:linear-gradient(90deg,#53d1a6,#36bda2); }
+.mi-bar-tone-3 { background:linear-gradient(90deg,#ffc48d,#f1a080); }
+.mi-bar-tone-4 { background:linear-gradient(90deg,#84baf5,#5e9ddd); }
+.mi-bar-tone-5 { background:linear-gradient(90deg,#f4a0ba,#d98ac9); }
+.mi-empty { margin-top:14px; border-color:#dcd9ef; background:linear-gradient(135deg,#fbfaff,#f6fbfd); color:#687590; font-size:12px; }
+.mi-follow { display:flex; gap:12px; margin-top:16px; padding:18px; border:1px solid #f6e4c9; border-radius:16px; background:linear-gradient(120deg,#fff8e9,#fff3ef); color:#795a52; font-size:11px; }
+.mi-follow-icon { flex:0 0 30px; width:30px; height:30px; display:grid; place-items:center; border-radius:9px; background:#fff; color:#dd9b67; }
+.mi-follow strong { color:#785352; font-size:12px; }
+.mi-follow li { line-height:1.5; }
+@media (min-width:640px) {
+  .mi-toolbar { grid-template-columns:minmax(250px,1fr) auto; align-items:end; }
+  .mi-kpis { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:639px) {
+  .mi-toolbar { grid-template-columns:minmax(0,1fr); }
+  .mi-context { padding-top:0; justify-content:flex-start; }
+}
+@media (max-width:540px) {
+  .mi-head,.mi-output-head { display:block; }
+  .mi-badge,.mi-status { display:inline-flex; margin-top:12px; }
+  .mi-kpis { grid-template-columns:minmax(0,1fr); }
+  .mi-kpi { min-height:135px; padding:18px; }
+  .mi-chart { padding:16px; }
+  .mi-chart-heading { display:block; }
+  .mi-chart-scale { display:block; text-align:left; margin-top:6px; }
+  .mi-summary { padding:15px; }
+  .mi-tabs { margin-left:-1px; margin-right:-1px; }
+}
+[data-theme="dark"] .mi-shell,[data-theme="dark-blue"] .mi-shell {
+  --mi-ink:#eaf0ff; --mi-muted:#9eafc9; --mi-edge:rgba(146,167,216,.2);
+}
+[data-theme="dark"] .mi-toolbar,[data-theme="dark-blue"] .mi-toolbar,
+[data-theme="dark"] .mi-chart,[data-theme="dark-blue"] .mi-chart {
+  background:linear-gradient(120deg,rgba(25,36,56,.94),rgba(28,39,64,.92)); border-color:var(--mi-edge);
+}
+[data-theme="dark"] .mi-tabs,[data-theme="dark-blue"] .mi-tabs { background:linear-gradient(110deg,#232641,#1b3544); border-color:var(--mi-edge); }
+[data-theme="dark"] .mi-tab.active,[data-theme="dark-blue"] .mi-tab.active { background:linear-gradient(120deg,#8371d8,#639cde); color:#fff; }
+[data-theme="dark"] .mi-search-control,[data-theme="dark-blue"] .mi-search-control { background:#1c2a40; border-color:#415071; }
+[data-theme="dark"] .mi-search,[data-theme="dark-blue"] .mi-search { background:transparent; color:#eaf0ff; border:0; }
+[data-theme="dark"] .mi-question-menu,[data-theme="dark-blue"] .mi-question-menu { background:rgba(25,37,59,.97); border-color:#394466; }
+[data-theme="dark"] .mi-q,[data-theme="dark-blue"] .mi-q { background:transparent; color:#d3def5; }
+[data-theme="dark"] .mi-q:hover,[data-theme="dark-blue"] .mi-q:hover { background:rgba(141,119,221,.22); color:#fff; }
+[data-theme="dark"] .mi-summary,[data-theme="dark-blue"] .mi-summary { background:linear-gradient(115deg,#2e2b4e,#233d4c); border-color:#494064; color:#e2e9f7; }
+[data-theme="dark"] .mi-summary-gap,[data-theme="dark-blue"] .mi-summary-gap { background:linear-gradient(110deg,#4a382d,#34303b); border-color:#64513b; }
+[data-theme="dark"] .mi-kpi,[data-theme="dark-blue"] .mi-kpi { background:linear-gradient(125deg,#2c2b48,#202f45); border-color:#454363; }
+[data-theme="dark"] .mi-tone-2,[data-theme="dark-blue"] .mi-tone-2 { background:linear-gradient(125deg,#203d3c,#203047); }
+[data-theme="dark"] .mi-tone-3,[data-theme="dark-blue"] .mi-tone-3 { background:linear-gradient(125deg,#453633,#263047); }
+[data-theme="dark"] .mi-tone-4,[data-theme="dark-blue"] .mi-tone-4 { background:linear-gradient(125deg,#233951,#223049); }
+[data-theme="dark"] .mi-kpi-label,[data-theme="dark-blue"] .mi-kpi-label,
+[data-theme="dark"] .mi-kpi-note,[data-theme="dark-blue"] .mi-kpi-note,
+[data-theme="dark"] .mi-bar-label,[data-theme="dark-blue"] .mi-bar-label,
+[data-theme="dark"] .mi-bar-value,[data-theme="dark-blue"] .mi-bar-value { color:#d4dff2; }
+[data-theme="dark"] .mi-kpi-value,[data-theme="dark-blue"] .mi-kpi-value { color:var(--tone); }
+[data-theme="dark"] .mi-track,[data-theme="dark-blue"] .mi-track { background:#33425d; }
+[data-theme="dark"] .mi-follow,[data-theme="dark-blue"] .mi-follow { background:#3a3237; border-color:#5b4844; color:#f5dfd3; }
+[data-theme="dark"] .mi-follow strong,[data-theme="dark-blue"] .mi-follow strong { color:#f9e6dc; }
+@media (prefers-reduced-motion:reduce) {
+  .mi-shell *, .mi-shell *::before, .mi-shell *::after { transition:none !important; animation:none !important; }
+}
+</style>
+<style data-inlined-from="margins-insights-dashboard.css">
+/* Margins follows the dashboard's font, size scale, and selected theme. */
+#tab-margins {
+  --mi-surface:#fff;
+  --mi-soft:#f8fafc;
+  --mi-text:#334155;
+  --mi-muted-color:#64748b;
+  --mi-border:#e2e8f0;
+  --mi-accent:#0284c7;
+  --mi-tint:#f0f9ff;
+  overflow:visible;
+  isolation:isolate;
+}
+[data-theme="dark"] #tab-margins {
+  --mi-surface:#16222f;
+  --mi-soft:#1a2636;
+  --mi-text:#dde6f0;
+  --mi-muted-color:#a8bfd8;
+  --mi-border:#1f3048;
+  --mi-accent:#38bdf8;
+  --mi-tint:#162b3b;
+}
+[data-theme="dark-blue"] #tab-margins {
+  --mi-surface:#031528;
+  --mi-soft:#061c36;
+  --mi-text:#cce4ff;
+  --mi-muted-color:#6ea8d0;
+  --mi-border:rgba(56,189,248,.18);
+  --mi-accent:#38bdf8;
+  --mi-tint:#092746;
+}
+#tab-margins .mi-shell {
+  --mi-ink:var(--mi-text);
+  --mi-muted:var(--mi-muted-color);
+  --mi-edge:var(--mi-border);
+  color:var(--mi-text);
+  font-family:inherit;
+  font-size:11px;
+  line-height:1.45;
+}
+#tab-margins .mi-shell button,
+#tab-margins .mi-shell input { font-family:inherit; }
+#tab-margins .mi-head { margin-bottom:12px; }
+#tab-margins .mi-overline,
+#tab-margins .mi-chart-eyebrow,
+#tab-margins .mi-summary-label { color:var(--mi-accent); font-size:9px; letter-spacing:.06em; }
+#tab-margins .mi-title { color:var(--mi-text); font-size:15px; line-height:1.25; font-weight:800; letter-spacing:normal; }
+#tab-margins .mi-title-dot { color:var(--mi-accent); }
+#tab-margins .mi-sub { color:var(--mi-muted); font-size:10px; }
+#tab-margins .mi-badge { color:var(--mi-accent); background:var(--mi-tint); border-color:var(--mi-edge); font-size:9px; box-shadow:none; }
+#tab-margins .mi-tabs { background:var(--mi-soft); border-color:var(--mi-edge); border-radius:10px 10px 0 0; padding:0; gap:0; }
+#tab-margins .mi-tab {
+  color:var(--mi-muted); background:transparent; border:0; border-bottom:2px solid transparent;
+  border-radius:0; min-height:38px; padding:8px 12px; font-size:10px; font-weight:700; box-shadow:none;
+}
+#tab-margins .mi-tab:hover { color:var(--mi-accent); background:var(--mi-tint); transform:none; }
+#tab-margins .mi-tab.active,
+#tab-margins .mi-tab.active:hover {
+  color:var(--mi-accent); background:var(--mi-surface); border-bottom:2px solid var(--mi-accent); box-shadow:none;
+}
+#tab-margins .mi-toolbar {
+  position:relative;
+  z-index:20;
+  padding:12px;
+  gap:8px;
+  background:var(--mi-surface);
+  border-color:var(--mi-edge);
+  border-radius:0 0 10px 10px;
+}
+#tab-margins .mi-search-wrap { z-index:21; }
+#tab-margins .mi-label { color:var(--mi-muted); font-size:9px; letter-spacing:.05em; margin-bottom:5px; }
+#tab-margins .mi-search-control {
+  min-height:38px; border:1px solid var(--mi-edge); border-radius:8px;
+  background:var(--mi-soft); color:var(--mi-accent); box-shadow:none; padding:3px 4px 3px 10px;
+}
+#tab-margins .mi-search-control:focus-within {
+  border-color:var(--mi-accent);
+  box-shadow:0 0 0 2px color-mix(in srgb,var(--mi-accent) 18%,transparent);
+  transform:none;
+}
+#tab-margins .mi-search { color:var(--mi-text); background:transparent; height:30px; font-size:11px; }
+#tab-margins .mi-search::placeholder { color:var(--mi-muted); }
+#tab-margins .mi-open { flex-basis:30px; height:29px; background:var(--mi-accent); box-shadow:none; border-radius:6px; }
+#tab-margins .mi-open:hover:not(:disabled) { filter:brightness(1.1); box-shadow:none; }
+#tab-margins .mi-question-menu {
+  z-index:30; background:var(--mi-surface); border-color:var(--mi-edge);
+  border-radius:8px; box-shadow:0 12px 26px rgba(15,23,42,.2);
+}
+#tab-margins .mi-q { color:var(--mi-text); background:var(--mi-surface); font-size:10px; }
+#tab-margins .mi-q:hover,
+#tab-margins .mi-q:focus-visible { color:var(--mi-accent); background:var(--mi-tint); transform:none; }
+#tab-margins .mi-menu-empty { color:var(--mi-muted); }
+#tab-margins .mi-context { padding-top:0; font-size:9px; }
+#tab-margins .mi-chip { color:var(--mi-muted); border-color:var(--mi-edge); background:var(--mi-soft); font-size:9px; }
+#tab-margins .mi-live { color:var(--mi-accent); background:var(--mi-tint); }
+#tab-margins .mi-output {
+  position:relative; z-index:1; margin-top:14px; padding:14px;
+  border:1px solid var(--mi-edge); border-radius:10px; background:var(--mi-surface);
+}
+#tab-margins .mi-output-head .mi-label { color:var(--mi-muted); }
+#tab-margins .mi-output-title { color:var(--mi-text); font-size:12px; font-weight:800; letter-spacing:normal; }
+#tab-margins .mi-status { font-size:9px; }
+#tab-margins .mi-summary {
+  padding:11px; color:var(--mi-text); background:var(--mi-tint); border-color:var(--mi-edge);
+  border-radius:9px; font-size:11px; box-shadow:none;
+}
+#tab-margins .mi-summary-icon { background:var(--mi-accent); box-shadow:none; }
+#tab-margins .mi-summary-gap { background:var(--mi-soft); }
+#tab-margins .mi-kpis { gap:8px; margin-top:10px; }
+#tab-margins .mi-kpi {
+  padding:12px; min-height:85px; align-items:center; background:var(--mi-surface);
+  border-color:var(--mi-edge); border-radius:9px; box-shadow:none;
+}
+#tab-margins .mi-kpi::before { background:var(--mi-accent); top:10px; bottom:10px; width:3px; }
+#tab-margins .mi-kpi::after { display:none; }
+#tab-margins .mi-kpi:hover { transform:none; border-color:var(--mi-accent); box-shadow:none; }
+#tab-margins .mi-kpi-label { color:var(--mi-muted); font-size:9px; letter-spacing:.04em; }
+#tab-margins .mi-kpi-value { color:var(--mi-text); font-size:15px; font-weight:800; letter-spacing:normal; margin-top:6px; }
+#tab-margins .mi-kpi-note { color:var(--mi-muted); font-size:9px; margin-top:4px; }
+#tab-margins .mi-chart {
+  margin-top:10px; padding:12px; background:var(--mi-surface);
+  border-color:var(--mi-edge); border-radius:9px; box-shadow:none;
+}
+#tab-margins .mi-chart-title { color:var(--mi-text); font-size:11px; letter-spacing:normal; }
+#tab-margins .mi-chart-scale { color:var(--mi-muted); font-size:9px; }
+#tab-margins .mi-bars { gap:10px; }
+#tab-margins .mi-bar-label,
+#tab-margins .mi-bar-value { color:var(--mi-text); font-size:10px; }
+#tab-margins .mi-bar-value[class*="mi-bar-tone-"] { background:transparent; }
+#tab-margins .mi-track { background:var(--mi-soft); border:1px solid var(--mi-edge); }
+#tab-margins .mi-empty { color:var(--mi-muted); background:var(--mi-soft); border-color:var(--mi-edge); }
+#tab-margins .mi-follow {
+  padding:12px; color:var(--mi-text); background:var(--mi-soft); border-color:var(--mi-edge);
+  border-left:3px solid var(--mi-accent); font-size:10px;
+}
+#tab-margins .mi-follow-icon { background:var(--mi-tint); color:var(--mi-accent); }
+#tab-margins .mi-follow strong { color:var(--mi-text); font-size:10px; }
+@media (max-width:540px) {
+  #tab-margins .mi-output { padding:11px; }
+  #tab-margins .mi-kpi { min-height:80px; }
+}
+</style>
+<style data-inlined-from="margins-sensitivity.css">
+/* Scoped to Margins so dashboard navigation, theme, and mobile layout stay intact. */
+#tab-margins .mi-sim {
+  position:relative;
+  z-index:2;
+  margin-top:12px;
+  padding:14px;
+  border:1px solid var(--mi-border);
+  border-radius:10px;
+  background:var(--mi-surface);
+  color:var(--mi-text);
+  font:inherit;
+}
+#tab-margins .mi-sim-heading {
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:12px;
+}
+#tab-margins .mi-sim h3,
+#tab-margins .mi-drill-dialog h3 {
+  margin:0;
+  color:var(--mi-text);
+  font-size:12px;
+  font-weight:800;
+  line-height:1.35;
+}
+#tab-margins .mi-sim-heading p,
+#tab-margins .mi-sim-note,
+#tab-margins .mi-drill-explain {
+  margin:3px 0 0;
+  color:var(--mi-muted-color);
+  font-size:10px;
+  line-height:1.5;
+}
+#tab-margins .mi-sim-badge {
+  flex:0 0 auto;
+  padding:5px 8px;
+  border:1px solid var(--mi-border);
+  border-radius:999px;
+  background:var(--mi-tint);
+  color:var(--mi-accent);
+  font-size:9px;
+  font-weight:700;
+}
+#tab-margins .mi-sim-controls {
+  display:grid;
+  grid-template-columns:minmax(100px,.8fr) minmax(105px,.9fr) minmax(155px,1.5fr) minmax(145px,1.4fr) auto;
+  align-items:end;
+  gap:8px;
+}
+#tab-margins .mi-sim-controls label {
+  min-width:0;
+  color:var(--mi-muted-color);
+  font-size:9px;
+  font-weight:750;
+}
+#tab-margins .mi-sim-controls select,
+#tab-margins .mi-sim-controls input[type="number"] {
+  display:block;
+  width:100%;
+  height:34px;
+  min-width:0;
+  margin-top:5px;
+  padding:5px 8px;
+  border:1px solid var(--mi-border);
+  border-radius:7px;
+  background:var(--mi-soft);
+  color:var(--mi-text);
+  font:inherit;
+  font-size:10px;
+}
+#tab-margins .mi-sim-controls select:focus-visible,
+#tab-margins .mi-sim-controls input:focus-visible,
+#tab-margins .mi-sim-reset:focus-visible,
+#tab-margins [data-mi-drill]:focus-visible {
+  outline:2px solid var(--mi-accent);
+  outline-offset:2px;
+}
+#tab-margins .mi-sim-adjust {
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+#tab-margins .mi-sim-adjust input[type="range"] {
+  flex:1;
+  min-width:40px;
+  accent-color:var(--mi-accent);
+}
+#tab-margins .mi-sim-adjust input[type="number"] { flex:0 0 58px; width:58px; }
+#tab-margins .mi-sim-validation { display:block; color:#b45309; font-size:9px; font-weight:600; }
+#tab-margins .mi-sim-controls input[aria-invalid="true"] { border-color:#d97706; }
+#tab-margins .mi-sim-reset {
+  height:34px;
+  padding:0 11px;
+  border:1px solid var(--mi-border);
+  border-radius:7px;
+  background:var(--mi-tint);
+  color:var(--mi-accent);
+  font-size:10px;
+  font-weight:700;
+  cursor:pointer;
+}
+#tab-margins .mi-sim-outcome {
+  margin:13px 0 9px;
+  padding:9px 10px;
+  border-radius:7px;
+  background:var(--mi-tint);
+  color:var(--mi-text);
+  font-size:11px;
+}
+#tab-margins .mi-sim-outcome span { color:var(--mi-muted-color); }
+#tab-margins .mi-sim-cards {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:8px;
+}
+#tab-margins .mi-sim-card {
+  min-width:0;
+  padding:9px;
+  border:1px solid var(--mi-border);
+  border-radius:8px;
+  background:var(--mi-soft);
+}
+#tab-margins .mi-sim-card span,
+#tab-margins .mi-sim-card small {
+  display:block;
+  color:var(--mi-muted-color);
+  font-size:9px;
+  line-height:1.4;
+}
+#tab-margins .mi-sim-card strong {
+  display:block;
+  margin:3px 0;
+  overflow-wrap:anywhere;
+  color:var(--mi-text);
+  font-size:13px;
+}
+#tab-margins .mi-sim-note { margin-top:8px; }
+#tab-margins [data-mi-drill] { cursor:zoom-in; }
+#tab-margins [data-mi-drill]:hover { border-color:var(--mi-accent); }
+#tab-margins .mi-drill-dialog {
+  width:min(760px,calc(100vw - 26px));
+  max-height:min(80vh,900px);
+  margin:auto;
+  padding:16px;
+  border:1px solid var(--mi-border);
+  border-radius:12px;
+  background:var(--mi-surface);
+  color:var(--mi-text);
+  box-shadow:0 24px 65px rgba(2,10,22,.3);
+  font-family:inherit;
+  font-size:11px;
+}
+#tab-margins .mi-drill-dialog::backdrop { background:rgba(3,13,29,.62); }
+#tab-margins .mi-drill-head {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+}
+#tab-margins .mi-drill-close {
+  display:grid;
+  place-items:center;
+  flex:0 0 28px;
+  width:28px;
+  height:28px;
+  padding:0;
+  border:1px solid var(--mi-border);
+  border-radius:6px;
+  background:var(--mi-soft);
+  color:var(--mi-text);
+  font-size:18px;
+  line-height:1;
+  cursor:pointer;
+}
+#tab-margins .mi-drill-totals {
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px 14px;
+  margin:11px 0;
+  padding:10px;
+  border-radius:7px;
+  background:var(--mi-tint);
+  color:var(--mi-text);
+}
+#tab-margins .mi-drill-dialog h4 { margin:14px 0 7px; font-size:10px; }
+#tab-margins .mi-drill-table { max-height:235px; overflow:auto; border:1px solid var(--mi-border); border-radius:7px; }
+#tab-margins .mi-drill-table table { width:100%; border-collapse:collapse; font-size:10px; }
+#tab-margins .mi-drill-table th,
+#tab-margins .mi-drill-table td { padding:7px 9px; border-bottom:1px solid var(--mi-border); text-align:left; vertical-align:top; }
+#tab-margins .mi-drill-table th { position:sticky; top:0; background:var(--mi-soft); color:var(--mi-muted-color); }
+#tab-margins .mi-drill-table td:last-child { white-space:nowrap; font-weight:700; }
+@media (max-width:850px) {
+  #tab-margins .mi-sim-controls { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  #tab-margins .mi-sim-cards { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:480px) {
+  #tab-margins .mi-sim-heading { display:block; }
+  #tab-margins .mi-sim-badge { display:inline-block; margin-top:8px; }
+  #tab-margins .mi-sim-controls { grid-template-columns:minmax(0,1fr); }
+  #tab-margins .mi-sim-cards { grid-template-columns:minmax(0,1fr); }
+  #tab-margins .mi-drill-dialog { padding:12px; }
+}
+</style>
+<script data-inlined-from="margins-insights.js">
+(function(){
+'use strict';
+const sections={
+ revenue:{label:'Revenue Insights',qs:[
+'What is the total revenue for the selected period compared to the prior period (MoM / QoQ / YoY / Bi-annual)?','What is the revenue growth rate (%) for the selected period?','Which clients or projects contributed the highest revenue in the selected period?','What is the revenue concentration (top 5 / top 10 clients as % of total revenue)?','How does actual revenue compare to budget / forecast for the selected period?','What is the average invoice value and number of invoices issued in the selected period?','What is the revenue trend across the selected months / quarters within the period?','Which revenue streams or project types are growing or declining the fastest?','What is the percentage of revenue from new vs. existing clients?','Are there any significant one-off or non-recurring revenue items in the period?']},
+ cost:{label:'Project Cost Insights',qs:[
+'What is the total Cost of Project for the selected period vs. prior period?','What is the Cost of Project as a percentage of Revenue (COGS %)?','How does actual Cost of Project compare to budget / forecast?','Which projects or clients have the highest Cost of Project in absolute terms and as % of their revenue?','What is the trend in Cost of Project over the selected months / quarters?','Which cost categories (labor, materials, subcontractors, etc.) are driving the majority of Cost of Project?','Are there projects where Cost of Project exceeds revenue (negative contribution)?','What is the variance in Cost of Project per project or client versus original estimates?','How has Cost of Project efficiency changed period-over-period?','Are there any unusual or one-time cost spikes in the selected period?']},
+ overhead:{label:'Overhead Insights',qs:[
+'What is the total Overhead for the selected period vs. prior period and vs. budget?','What is Overhead as a percentage of Revenue?','How has the Overhead ratio (Overhead / Revenue) trended over the selected periods?','Which Overhead categories (salaries, rent, utilities, admin, marketing, etc.) are the largest and which are growing fastest?','Is Overhead absorption improving or deteriorating relative to revenue growth?','What is the fixed vs. variable Overhead split in the selected period?','Are there any significant one-off or non-recurring Overhead items?','How does actual Overhead compare to the annual / quarterly budget phasing?','What is the Overhead cost per employee or per project (if relevant metrics are tracked)?','Which Overhead costs are controllable vs. non-controllable in the short term?']},
+ gross:{label:'Gross Margin Insights',qs:[
+'What is the Gross Margin amount and Gross Margin % for the selected period?','How does Gross Margin % compare to the prior period and to budget / target?','Which clients or projects deliver the highest / lowest Gross Margin %?','What is the Gross Margin trend across the months / quarters in the selected period?','What is the contribution of each major client or project type to overall Gross Margin?','How much of the Gross Margin change is driven by volume (revenue) vs. rate (margin %)?','Are there projects with Gross Margin below the company target threshold?','What is the Gross Margin by revenue stream or service line?','How does actual Gross Margin compare to forecast at both amount and percentage levels?','What is the impact of Cost of Project variances on Gross Margin in the period?']},
+ net:{label:'Net Margin Insights',qs:[]},
+ performance:{label:'Project Performance Insights',qs:[
+'Who are the top clients by Revenue, Gross Margin, and Gross Margin % in the selected period?','What is the client concentration risk (revenue and margin contribution of top clients)?','Which clients showed the strongest / weakest growth in Revenue or Gross Margin vs. prior period?','How many active clients generated revenue in the selected period vs. prior periods?','What is the average Revenue, Cost of Project, and Gross Margin per client?','Which clients have declining Gross Margin % or rising Cost of Project ratios?','What is the new client acquisition vs. existing client retention contribution to Revenue?','Are there clients with high Revenue but low or negative Gross Margin?','Which clients are under-penetrated relative to their potential or historical spend?','What is the client-level variance to budget / forecast for Revenue and Gross Margin?']}}
+const follow={
+ revenue:['Why did revenue increase or decline versus the prior period or budget?','Which clients or projects drove the largest positive or negative variance?','Was the variance driven by pricing, scope, delayed invoicing, or cancelled work?','Were one-off items distorting the period?'],
+ cost:['Why did project cost rise or fall versus the prior period or budget?','Which projects experienced the biggest cost overruns and why?','Was the increase driven by volume or higher unit rates?','Which cost categories show the largest unfavourable variances?'],
+ overhead:['Why did overhead increase or decrease?','Which categories drove the variance: headcount, pay, initiatives, inflation, or one-offs?','Is overhead growing faster than revenue?','Which controllable costs can be reduced without affecting operations?'],
+ gross:['Why did Gross Margin improve or deteriorate?','Was pressure caused by pricing, delivery cost, project mix, or scope?','Which projects caused the largest margin erosion?','How much was estimation error versus execution?'],
+ performance:['Why did specific clients grow or decline?','Which client margins are deteriorating and what is driving it?','Are high-revenue clients delivering poor margins?','Which clients are under-penetrated or at risk of churn?']};
+let active='revenue',selected='';
+const money=n=>window.fmtM?fmtM(n):'₦'+Math.round(n).toLocaleString();
+const pct=n=>Number.isFinite(n)?n.toFixed(1)+'%':'N/A';
+const revVal=r=>(Number(r.NGN)||0)+(Number(r.USD)||0)*(Number(r.ExchRate)||0);
+const dateOf=(r,k)=>new Date((r[k]||'')+'T00:00:00');
+function range(){return typeof getDateRange==='function'?getDateRange():{start:'2000-01-01',end:'2999-12-31'}}
+function priorRange(){const r=range(),s=new Date(r.start+'T00:00:00'),e=new Date(r.end+'T00:00:00'),days=Math.max(1,Math.round((e-s)/86400000)+1),pe=new Date(s);pe.setDate(pe.getDate()-1);const ps=new Date(pe);ps.setDate(ps.getDate()-days+1);return{start:isoDate(ps),end:isoDate(pe)}}
+function inR(d,r){return d&&d>=r.start&&d<=r.end}
+function source(r){const rv=(typeof DATA_ARRAY_REVENUE!=='undefined'?DATA_ARRAY_REVENUE:[]).filter(x=>inR(x.InvDate,r));const cs=(typeof getActiveCostSource==='function'?getActiveCostSource():(typeof DATA_ARRAY_COSTS!=='undefined'?DATA_ARRAY_COSTS:[])).filter(x=>inR(x.PostDate,r));return{rv,proj:cs.filter(x=>x.Category==='PROJECT'),oh:cs.filter(x=>x.Category==='DEPARTMENT'&&x.CostEl==='OVERHEAD')}}
+function sum(a,f){return a.reduce((s,x)=>s+(f?f(x):Number(x)||0),0)}
+function group(a,key,val){const m={};a.forEach(x=>{const k=(typeof key==='function'?key(x):x[key])||'Unknown';m[k]=(m[k]||0)+val(x)});return m}
+function ranked(m,n=10){return Object.entries(m).sort((a,b)=>b[1]-a[1]).slice(0,n)}
+ const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function drillMetric(label){
+   const name=label.toLowerCase();
+   if(name==='top 5 concentration')return'concentration5';
+   if(name==='top 10 concentration')return'concentration10';
+   if(name==='gm % movement'||name==='gross margin %')return'gross-rate';
+   if(name==='growth rate'||name==='growth')return'growth';
+   if(name==='cogs %')return'cost-rate';
+   if(name==='overhead / revenue'||name==='prior ratio')return'overhead-rate';
+   if(name==='exposure')return'exposure';
+   if(name==='variance')return active==='cost'?'cost':active==='overhead'?'overhead':active==='gross'?'gross':'revenue';
+   if(name.includes('gross margin')||name==='prior gm')return'gross';
+   if(name.includes('overhead'))return'overhead';
+   if(name.includes('cost'))return'cost';
+   if(name.includes('revenue'))return'revenue';
+   return'';
+  }
+ function kpis(items){
+   return '<div class="mi-kpis">'+items.map((x,i)=>{const metric=drillMetric(x[0]);const drill=metric?` data-mi-drill="kpi" data-mi-metric="${metric}" data-label="${esc(x[0])}" role="button" tabindex="0" title="Click, double-click or press Enter for underlying records" aria-label="Show underlying records for ${esc(x[0])}"`:'';return `<div class="mi-kpi mi-tone-${i%4+1}"${drill}><div class="mi-kpi-content"><div class="mi-kpi-label">${esc(x[0])}</div><div class="mi-kpi-value">${esc(x[1])}</div><div class="mi-kpi-note">${esc(x[2]||'Selected period')}</div></div></div>`}).join('')+'</div>';
+ }
+ function bars(title,rows,format=money){
+  if(!rows.length)return '<div class="mi-empty">No items were recorded for this chart in the selected period.</div>';
+  const max=Math.max(1,...rows.map(x=>Math.abs(x[1])));
+   return `<div class="mi-chart"><div class="mi-chart-heading"><div><span class="mi-chart-eyebrow">COMPARATIVE BREAKDOWN</span><h4 class="mi-chart-title">${esc(title)}</h4></div><span class="mi-chart-scale">Bar length relative to the largest item · click a row to inspect</span></div><div class="mi-bars">${rows.map((x,i)=>`<div class="mi-bar-row" style="--mi-bar-delay:${Math.min(i,10)*55}ms" data-mi-drill="bar" data-chart="${esc(title)}" data-label="${esc(x[0])}" role="button" tabindex="0" title="Click, double-click or press Enter for underlying records" aria-label="Show underlying records for ${esc(x[0])}"><div class="mi-bar-top"><span class="mi-bar-label" title="${esc(x[0])}">${esc(x[0])}</span><span class="mi-bar-value mi-bar-tone-${i%8+1}">${esc(format(x[1]))}</span></div><div class="mi-track" role="img" aria-label="${esc(x[0])}: ${esc(format(x[1]))}"><div class="mi-fill mi-bar-tone-${i%8+1}" style="width:${Math.min(100,Math.abs(x[1])/max*100)}%"></div></div></div>`).join('')}</div></div>`;
+ }
+function monthRows(a,dateKey,val){return ranked(group(a,x=>(x[dateKey]||'').slice(0,7),val),24).sort((a,b)=>String(a[0]).localeCompare(String(b[0])))}
+function gap(msg){return{gap:true,summary:msg,html:'<div class="mi-empty">This answer needs additional structured data in Supabase. No estimate has been substituted.</div>'}}
+function compute(){
+ const cur=source(range()),pr=source(priorRange()),rev=sum(cur.rv,revVal),prev=sum(pr.rv,revVal),cost=sum(cur.proj,x=>Number(x.Credit)||0),pcost=sum(pr.proj,x=>Number(x.Credit)||0),oh=sum(cur.oh,x=>Number(x.Credit)||0),poh=sum(pr.oh,x=>Number(x.Credit)||0),gm=rev-cost,pgm=prev-pcost,gmP=rev?gm/rev*100:0,pgmP=prev?pgm/prev*100:0,q=selected.toLowerCase();
+ if(!selected)return{summary:'Choose a management question above to generate its live answer.',html:'<div class="mi-empty">No question selected</div>'};
+ if(q.includes('budget')||q.includes('forecast')||q.includes('original estimates'))return gap('Budget, forecast, target, and original-estimate fields are not present in the current revenue and cost datasets.');
+ if(q.includes('new vs')||q.includes('acquisition')||q.includes('retention'))return gap('Client start date or new/existing classification is required for this analysis.');
+ if(q.includes('fixed vs')||q.includes('controllable'))return gap('A fixed/variable and controllability classification is required on overhead records.');
+ if(q.includes('per employee'))return gap('Employee headcount is not tracked in the current finance tables.');
+ if(q.includes('service line')||q.includes('revenue stream')||q.includes('project types'))return gap('A service-line or project-type field is required for this analysis.');
+ if(q.includes('one-off')||q.includes('one-time')||q.includes('non-recurring')||q.includes('unusual')){const rows=active==='revenue'?cur.rv.map(x=>[x.Client+' · '+(x.Desc||x.InvNo),revVal(x)]):active==='overhead'?cur.oh.map(x=>[x.DeptCode+' · '+x.Desc,Number(x.Credit)||0]):cur.proj.map(x=>[x.ProjName+' · '+x.Desc,Number(x.Credit)||0]);rows.sort((a,b)=>b[1]-a[1]);return{summary:'Largest individual transactions are shown as candidates for management review. Transaction size alone does not prove an item is non-recurring.',html:kpis([['Largest transaction',rows[0]?money(rows[0][1]):money(0),'Review classification'],['Transactions reviewed',rows.length.toLocaleString(),'Selected period']])+bars('Largest transactions',rows.slice(0,10))}}
+ if(active==='revenue'){
+  const growth=prev?(rev-prev)/prev*100:NaN,clients=ranked(group(cur.rv,'Client',revVal),10),projects=ranked(group(cur.rv,'Project',revVal),10);
+  if(q.includes('concentration')){const top5=sum(clients.slice(0,5),x=>x[1]),top10=sum(clients,x=>x[1]);return{summary:'The largest clients account for '+pct(rev?top5/rev*100:0)+' of selected-period revenue.',html:kpis([['Top 5 concentration',pct(rev?top5/rev*100:0),'Share of revenue'],['Top 10 concentration',pct(rev?top10/rev*100:0),'Share of revenue'],['Active clients',new Set(cur.rv.map(x=>x.Client)).size,'With revenue'],['Total revenue',money(rev),'Selected period']])+bars('Top clients',clients)}}
+  if(q.includes('clients or projects'))return{summary:'Top contributors are ranked from live invoice records for the active dashboard period.',html:kpis([['Total revenue',money(rev),'Selected period'],['Top client',clients[0]?clients[0][0]:'N/A',clients[0]?money(clients[0][1]):''],['Top project',projects[0]?projects[0][0]:'N/A',projects[0]?money(projects[0][1]):''],['Active clients',new Set(cur.rv.map(x=>x.Client)).size,'With revenue']])+bars('Revenue by client',clients)+bars('Revenue by project',projects)}
+  if(q.includes('average invoice'))return{summary:'Invoice activity is calculated from invoice records in the selected period.',html:kpis([['Total revenue',money(rev),''],['Invoice records',cur.rv.length.toLocaleString(),''],['Average invoice',money(cur.rv.length?rev/cur.rv.length:0),''],['Active clients',new Set(cur.rv.map(x=>x.Client)).size,'']])}
+  if(q.includes('trend'))return{summary:'Monthly revenue movement within the selected date range.',html:kpis([['Period revenue',money(rev),''],['Prior period',money(prev),''],['Growth',pct(growth),''],['Months',monthRows(cur.rv,'InvDate',revVal).length,'']])+bars('Monthly revenue',monthRows(cur.rv,'InvDate',revVal))}
+   return{summary:prev?'Revenue is '+(growth>=0?'up ':'down ')+pct(Math.abs(growth))+' against the immediately preceding period of equal length.':'No revenue was recorded in the preceding comparable period, so a growth percentage is not available.',html:kpis([['Current revenue',money(rev),range().start+' to '+range().end],['Prior revenue',money(prev),priorRange().start+' to '+priorRange().end],['Variance',money(rev-prev),''],['Growth rate',pct(growth),'']])+bars('Top revenue clients',clients)};
+ }
+ if(active==='cost'){
+  const ratio=rev?cost/rev*100:0,pratio=prev?pcost/prev*100:0,projects=ranked(group(cur.proj,'ProjName',x=>Number(x.Credit)||0),10),cats=ranked(group(cur.proj,'CostEl',x=>Number(x.Credit)||0),10),projectRev=group(cur.rv,'Project',revVal),all=Object.keys({...group(cur.proj,'ProjName',x=>Number(x.Credit)||0),...projectRev}).map(p=>[p,(group(cur.proj,'ProjName',x=>Number(x.Credit)||0)[p]||0)-(projectRev[p]||0)]).filter(x=>x[1]>0).sort((a,b)=>b[1]-a[1]);
+  if(q.includes('categories'))return{summary:'Direct-cost categories are ranked by their contribution to selected-period project cost.',html:kpis([['Project cost',money(cost),''],['COGS %',pct(ratio),''],['Largest category',cats[0]?cats[0][0]:'N/A',cats[0]?money(cats[0][1]):''],['Categories',cats.length,'']])+bars('Project cost by category',cats)}
+  if(q.includes('exceeds revenue'))return{summary:all.length+' project(s) have recorded direct cost above matched project revenue in the selected period.',html:kpis([['Negative projects',all.length,''],['Exposure',money(sum(all,x=>x[1])),'Cost above revenue'],['Project cost',money(cost),''],['Revenue',money(rev),'']])+(all.length?bars('Cost exceeding revenue',all):'<div class="mi-empty">No negative-contribution projects identified.</div>')}
+  if(q.includes('trend'))return{summary:'Monthly project-cost movement for the active period.',html:kpis([['Current cost',money(cost),''],['Prior cost',money(pcost),''],['Variance',money(cost-pcost),''],['COGS %',pct(ratio),'']])+bars('Monthly project cost',monthRows(cur.proj,'PostDate',x=>Number(x.Credit)||0))}
+  return{summary:'Project cost is '+pct(ratio)+' of selected-period revenue versus '+pct(pratio)+' in the preceding comparable period.',html:kpis([['Current cost',money(cost),''],['Prior cost',money(pcost),''],['Variance',money(cost-pcost),''],['COGS %',pct(ratio),'']])+bars('Highest-cost projects',projects)};
+ }
+ if(active==='overhead'){
+  const ratio=rev?oh/rev*100:0,pratio=prev?poh/prev*100:0,depts=ranked(group(cur.oh,'DeptCode',x=>Number(x.Credit)||0),10);
+  if(q.includes('trend')||q.includes('absorption'))return{summary:'Overhead represents '+pct(ratio)+' of revenue versus '+pct(pratio)+' in the prior comparable period.',html:kpis([['Current overhead',money(oh),''],['Prior overhead',money(poh),''],['Overhead / revenue',pct(ratio),''],['Prior ratio',pct(pratio),'']])+bars('Monthly overhead',monthRows(cur.oh,'PostDate',x=>Number(x.Credit)||0))}
+  return{summary:'Overhead for the selected period is '+money(oh)+', a '+pct(poh?(oh-poh)/poh*100:NaN)+' movement against the prior comparable period.',html:kpis([['Current overhead',money(oh),''],['Prior overhead',money(poh),''],['Variance',money(oh-poh),''],['Overhead / revenue',pct(ratio),'']])+bars('Overhead by department',depts)};
+ }
+ if(active==='gross'){
+  const costs=group(cur.proj,'ProjName',x=>Number(x.Credit)||0),revs=group(cur.rv,'Project',revVal),rows=Object.keys({...costs,...revs}).map(p=>[p,(revs[p]||0)-(costs[p]||0),revs[p]?((revs[p]||0)-(costs[p]||0))/revs[p]*100:0]).sort((a,b)=>b[1]-a[1]);
+  if(q.includes('highest / lowest'))return{summary:'Project margin ranking matches revenue and direct cost by project name.',html:kpis([['Gross margin',money(gm),''],['Gross margin %',pct(gmP),''],['Highest GM project',rows[0]?rows[0][0]:'N/A',rows[0]?pct(rows[0][2]):''],['Lowest GM project',rows.length?rows[rows.length-1][0]:'N/A',rows.length?pct(rows[rows.length-1][2]):'']])+bars('Gross margin by project',rows.slice(0,10),money)}
+  if(q.includes('trend')){const rm=group(cur.rv,x=>(x.InvDate||'').slice(0,7),revVal),cm=group(cur.proj,x=>(x.PostDate||'').slice(0,7),x=>Number(x.Credit)||0),months=[...new Set([...Object.keys(rm),...Object.keys(cm)])].sort().map(m=>[m,(rm[m]||0)-(cm[m]||0)]);return{summary:'Monthly gross margin is revenue less direct project cost.',html:kpis([['Gross margin',money(gm),''],['Gross margin %',pct(gmP),''],['Prior GM',money(pgm),''],['GM % movement',pct(gmP-pgmP),'points']])+bars('Monthly gross margin',months)}}
+  return{summary:'Gross Margin is '+money(gm)+' or '+pct(gmP)+' of revenue, versus '+pct(pgmP)+' in the prior comparable period.',html:kpis([['Revenue',money(rev),''],['Project cost',money(cost),''],['Gross margin',money(gm),''],['Gross margin %',pct(gmP),'']])+bars('Gross margin by project',rows.slice(0,10),money)};
+ }
+ if(active==='performance'){
+  const revs=group(cur.rv,'Client',revVal),costs=group(cur.proj,'ProjName',x=>Number(x.Credit)||0),rows=ranked(revs,10); 
+  if(q.includes('active clients'))return{summary:'Active clients are clients with at least one revenue record in each comparable period.',html:kpis([['Current active clients',new Set(cur.rv.map(x=>x.Client)).size,''],['Prior active clients',new Set(pr.rv.map(x=>x.Client)).size,''],['Current revenue',money(rev),''],['Average per client',money(Object.keys(revs).length?rev/Object.keys(revs).length:0),'']])+bars('Revenue by client',rows)}
+  if(q.includes('gross margin'))return gap('Reliable client-level Gross Margin requires a maintained client-to-project mapping. Current project costs identify projects, not clients.');
+  return{summary:'Client performance is ranked using live revenue. Cost and margin by client require an explicit client-to-project mapping.',html:kpis([['Active clients',Object.keys(revs).length,''],['Revenue',money(rev),''],['Average revenue/client',money(Object.keys(revs).length?rev/Object.keys(revs).length:0),''],['Top client',rows[0]?rows[0][0]:'N/A',rows[0]?money(rows[0][1]):'']])+bars('Client revenue performance',rows)};
+ }
+ return gap('Net Margin questions have not yet been supplied. This section is reserved and ready for your question set.');
+}
+function render(){
+ const root=document.getElementById('margins-insights-root');if(!root)return;
+  root.innerHTML=`<div class="mi-shell">
+   <div class="mi-head"><div><div class="mi-overline">FINANCIAL INTELLIGENCE / MARGINS</div><div class="mi-title">Management insights<span class="mi-title-dot">.</span></div><div class="mi-sub">Clear answers from your active dashboard period and finance records</div></div><span id="margins-basis-badge" class="mi-badge"><i class="fa-solid fa-coins"></i> ${(typeof REPORTING_BASIS!=='undefined'&&REPORTING_BASIS==='ifrs')?'Accrual Basis (IFRS)':'Cash Basis'}</span></div>
+   <div class="mi-tabs" role="tablist" aria-label="Insight sections">${Object.entries(sections).map(([k,s])=>`<button class="mi-tab ${k===active?'active':''}" data-section="${k}" role="tab" aria-selected="${k===active}">${s.label}${k==='net'?' · Awaiting questions':''}</button>`).join('')}</div>
+   <div class="mi-toolbar"><div class="mi-search-wrap"><label class="mi-label" for="mi-search">ASK A MANAGEMENT QUESTION</label><div class="mi-search-control"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i><input id="mi-search" class="mi-search" type="search" autocomplete="off" aria-controls="mi-menu" placeholder="${active==='revenue'?'What is the revenue growth rate (%) for the selected period?':sections[active].qs.length?'Search '+sections[active].qs.length+' questions…':'Questions coming soon'}" ${sections[active].qs.length?'':'disabled'}><button id="mi-open" class="mi-open" type="button" aria-label="Browse questions" aria-expanded="false" ${sections[active].qs.length?'':'disabled'}><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button></div><div id="mi-menu" class="mi-question-menu" role="group" aria-label="Available questions"></div></div>
+   <div class="mi-context"><span class="mi-chip"><i class="fa-regular fa-calendar" aria-hidden="true"></i> ${esc(range().start)} → ${esc(range().end)}</span><span class="mi-chip mi-live"><span class="mi-live-dot"></span> Live data</span></div></div>
+    <div id="mi-sensitivity-root"></div>
+    <div id="mi-output" class="mi-output"></div>
+    <div id="mi-drill-host"></div></div>`;
+ root.querySelectorAll('.mi-tab').forEach(b=>b.onclick=()=>{active=b.dataset.section;selected='';render()});
+  const search=document.getElementById('mi-search');if(search){search.onfocus=()=>showQuestions(search.value);search.oninput=()=>showQuestions(search.value);search.onkeydown=e=>{if(e.key==='Escape')setMenuOpen(false)}}
+  const open=document.getElementById('mi-open');if(open)open.onclick=()=>{const menu=document.getElementById('mi-menu');if(menu.classList.contains('open'))setMenuOpen(false);else showQuestions(search.value)};
+  renderAnswer();
+   if(typeof window.renderMarginsSensitivity==='function')window.renderMarginsSensitivity();
+}
+ function setMenuOpen(open){const m=document.getElementById('mi-menu'),b=document.getElementById('mi-open');if(m)m.classList.toggle('open',open);if(b)b.setAttribute('aria-expanded',String(open))}
+ function closeOutside(e){if(!e.target.closest('.mi-search-wrap'))setMenuOpen(false)}
+ function showQuestions(term){const m=document.getElementById('mi-menu');if(!m)return;const q=sections[active].qs.filter(x=>x.toLowerCase().includes((term||'').toLowerCase()));m.innerHTML=q.length?q.map(x=>'<button type="button" class="mi-q" data-i="'+sections[active].qs.indexOf(x)+'">'+esc(x)+'</button>').join(''):'<div class="mi-menu-empty">No matching questions</div>';setMenuOpen(true);m.querySelectorAll('.mi-q').forEach(b=>b.onclick=()=>{selected=sections[active].qs[Number(b.dataset.i)];document.getElementById('mi-search').value=selected;setMenuOpen(false);renderAnswer()})}
+ function renderAnswer(){const out=document.getElementById('mi-output');if(!out)return;const r=compute(),fs=selected&&follow[active]?'<div class="mi-follow"><span class="mi-follow-icon"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i></span><div><strong>Questions worth exploring next</strong><ul>'+follow[active].map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></div></div>':'';out.innerHTML=`<div class="mi-output-head"><div><div class="mi-label">YOUR ANSWER / ${esc(sections[active].label.toUpperCase())}</div><h3 class="mi-output-title">${esc(selected||'Select a question to begin')}</h3></div><span class="mi-status ${r.gap?'gap':''}"><span class="mi-status-dot"></span> ${r.gap?'Additional data required':selected?'Live answer':'Ready'}</span></div><div class="mi-summary ${r.gap?'mi-summary-gap':''}"><span class="mi-summary-icon"><i class="fa-solid ${r.gap?'fa-circle-info':'fa-chart-line'}" aria-hidden="true"></i></span><div><span class="mi-summary-label">${r.gap?'DATA NOTE':'AT A GLANCE'}</span><p>${esc(r.summary)}</p></div></div>${r.html}${fs}`}
+ window.getMarginsInsightSnapshot=()=>({current:source(range()),prior:source(priorRange()),period:range(),priorPeriod:priorRange(),active});
+ window.renderMarginsInsights=render;
+window.addEventListener('DOMContentLoaded',render);
+ document.addEventListener('click',closeOutside);
+const oldSwitch=window.switchTab;window.switchTab=function(id){oldSwitch(id);if(id==='margins')render()};
+const oldProcess=window.processFinancialData;window.processFinancialData=function(){oldProcess();if(!document.getElementById('tab-margins').classList.contains('hidden'))render()};
+})();
+</script>
+<script data-inlined-from="margins-sensitivity.js">
+(function () {
+  'use strict';
+
+  // A what-if view only. The dashboard's source arrays and live answers are never changed.
+  const scenario = { scope: 'client', metric: 'revenue', entity: '', percent: 0 };
+  const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  })[char]);
+  const sum = (rows, value) => rows.reduce((total, row) => total + value(row), 0);
+  const revenue = row => (Number(row.NGN) || 0) + (Number(row.USD) || 0) * (Number(row.ExchRate) || 0);
+  const cost = row => Number(row.Credit) || 0;
+  const money = value => typeof window.fmtM === 'function' ? window.fmtM(value) : '₦' + Math.round(value).toLocaleString();
+  const percent = value => Number.isFinite(value) ? value.toFixed(1) + '%' : 'N/A';
+  const change = (before, after) => before ? percent((after - before) / Math.abs(before) * 100) : (after === 0 ? '0.0%' : 'N/A');
+  const ratio = (part, whole) => whole ? part / whole * 100 : NaN;
+  const snapshot = () => window.getMarginsInsightSnapshot();
+
+  function candidates(current) {
+    const rows = scenario.scope === 'client' ? current.rv :
+      scenario.metric === 'cost' ? current.proj : current.rv;
+    const key = scenario.scope === 'client' ? 'Client' :
+      scenario.metric === 'cost' ? 'ProjName' : 'Project';
+    return [...new Set(rows.map(row => row[key]).filter(Boolean))].sort((a, b) => String(a).localeCompare(String(b)));
+  }
+
+  function impactCard(label, before, after, isRatio = false) {
+    const difference = after - before;
+    const display = isRatio ? percent : money;
+    return `<div class="mi-sim-card"><span>${esc(label)}</span><strong>${esc(display(after))}</strong>` +
+      `<small>Live ${esc(display(before))} · ${esc(isRatio ? (Number.isFinite(difference) ? difference.toFixed(1) + ' pp' : 'N/A') : money(difference))} impact` +
+      `${isRatio ? '' : ' (' + esc(change(before, after)) + ')'}</small></div>`;
+  }
+
+  function renderImpact() {
+    const target = document.getElementById('mi-sim-results');
+    if (!target) return;
+    const { current, active } = snapshot();
+    const matching = scenario.scope === 'client' ?
+      current.rv.filter(row => row.Client === scenario.entity) :
+      scenario.metric === 'cost' ?
+        current.proj.filter(row => row.ProjName === scenario.entity) :
+        current.rv.filter(row => row.Project === scenario.entity);
+    if (!scenario.entity || !matching.length) {
+      target.innerHTML = '<p class="mi-sim-note">No matching records in the selected period. Choose a client or project with recorded activity.</p>';
+      return;
+    }
+    const base = sum(matching, scenario.metric === 'cost' ? cost : revenue);
+    const delta = base * scenario.percent / 100;
+    const liveRevenue = sum(current.rv, revenue);
+    const liveCost = sum(current.proj, cost);
+    const overhead = sum(current.oh, cost);
+    const modeledRevenue = liveRevenue + (scenario.metric === 'revenue' ? delta : 0);
+    const modeledCost = liveCost + (scenario.metric === 'cost' ? delta : 0);
+    const liveGross = liveRevenue - liveCost;
+    const modeledGross = modeledRevenue - modeledCost;
+    const note = active === 'net' ?
+      'Net Margin questions are not available yet. This model shows gross-margin effects only; it does not calculate statutory net profit or tax.' :
+      active === 'overhead' ?
+        'Overhead amounts are held constant. A revenue change can alter the overhead-to-revenue ratio; a direct-cost change does not.' :
+        scenario.scope === 'client' ?
+          'Client costs are not allocated because no reliable client-to-project cost mapping exists. Gross-margin impact assumes direct costs stay fixed.' :
+          'This models one project variable only; all other project amounts and overhead remain fixed.';
+    target.innerHTML = `<p class="mi-sim-outcome"><strong>${esc(scenario.entity)}</strong> · ${esc(scenario.metric === 'cost' ? 'direct cost' : 'revenue')} ` +
+      `${scenario.percent >= 0 ? '+' : ''}${scenario.percent}% → ${esc(money(base + delta))} ` +
+      `<span>(live ${esc(money(base))}; impact ${esc(money(delta))})</span></p>` +
+      `<div class="mi-sim-cards">` +
+      impactCard('Total revenue', liveRevenue, modeledRevenue) +
+      impactCard('Project cost', liveCost, modeledCost) +
+      impactCard('Gross margin', liveGross, modeledGross) +
+      impactCard('Overhead / revenue', ratio(overhead, liveRevenue), ratio(overhead, modeledRevenue), true) +
+      `</div><p class="mi-sim-note">${esc(note)} Percentages compare modeled results with the current live period; no records are edited.</p>`;
+  }
+
+  function renderPanel() {
+    const root = document.getElementById('mi-sensitivity-root');
+    if (!root) return;
+    const { current } = snapshot();
+    const names = candidates(current);
+    if (!names.includes(scenario.entity)) scenario.entity = names[0] || '';
+    root.innerHTML = `<section class="mi-sim" aria-label="Sensitivity analysis"><div class="mi-sim-heading">` +
+      `<div><span class="mi-label">DYNAMIC SENSITIVITY ANALYSIS</span><h3>What if one variable changes?</h3>` +
+      `<p>Choose a client or project, then adjust one recorded amount. Available on every insight tab.</p></div>` +
+      `<span class="mi-sim-badge">Scenario only · not saved</span></div>` +
+      `<div class="mi-sim-controls"><label>Analyse by<select id="mi-sim-scope">` +
+      `<option value="client" ${scenario.scope === 'client' ? 'selected' : ''}>Client</option>` +
+      `<option value="project" ${scenario.scope === 'project' ? 'selected' : ''}>Project</option></select></label>` +
+      `<label>Change<select id="mi-sim-metric">` +
+      `<option value="revenue" ${scenario.metric === 'revenue' ? 'selected' : ''}>Revenue</option>` +
+      (scenario.scope === 'project' ? `<option value="cost" ${scenario.metric === 'cost' ? 'selected' : ''}>Project cost</option>` : '') +
+      `</select></label><label>${scenario.scope === 'client' ? 'Client' : 'Project'}` +
+      `<select id="mi-sim-entity" ${names.length ? '' : 'disabled'}>${names.map(name =>
+        `<option value="${esc(name)}" ${name === scenario.entity ? 'selected' : ''}>${esc(name)}</option>`).join('')}</select></label>` +
+      `<label>Change by (%)<span class="mi-sim-adjust"><input id="mi-sim-percent" type="range" min="-100" max="100" step="1" value="${scenario.percent}" aria-label="Change percentage">` +
+      `<input id="mi-sim-number" type="number" min="-100" max="100" step="1" value="${scenario.percent}" aria-label="Change percentage number" aria-describedby="mi-sim-validation"></span><span id="mi-sim-validation" class="mi-sim-validation" role="status"></span></label>` +
+      `<button class="mi-sim-reset" type="button" id="mi-sim-reset">Reset</button></div>` +
+      `<div id="mi-sim-results" aria-live="polite"></div></section>`;
+    root.querySelector('#mi-sim-scope').onchange = event => {
+      scenario.scope = event.target.value;
+      if (scenario.scope === 'client') scenario.metric = 'revenue';
+      scenario.entity = '';
+      renderPanel();
+    };
+    root.querySelector('#mi-sim-metric').onchange = event => {
+      scenario.metric = event.target.value;
+      scenario.entity = '';
+      renderPanel();
+    };
+    root.querySelector('#mi-sim-entity').onchange = event => {
+      scenario.entity = event.target.value;
+      renderImpact();
+    };
+    const rangeInput = root.querySelector('#mi-sim-percent');
+    const numberInput = root.querySelector('#mi-sim-number');
+    const validation = root.querySelector('#mi-sim-validation');
+    function message(text) {
+      validation.textContent = text;
+      numberInput.setAttribute('aria-invalid', String(Boolean(text)));
+    }
+    function update(value) {
+      if (!Number.isFinite(Number(value)) || value === '' || value === '-') {
+        numberInput.value = String(scenario.percent);
+        message('');
+        return;
+      }
+      scenario.percent = Math.max(-100, Math.min(100, Math.round(Number(value))));
+      rangeInput.value = String(scenario.percent);
+      numberInput.value = String(scenario.percent);
+      message('');
+      renderImpact();
+    }
+    rangeInput.oninput = event => update(event.target.value);
+    numberInput.oninput = event => {
+      const raw = event.target.value;
+      if (raw === '' || raw === '-') { message('Enter a number from -100 to 100.'); return; }
+      const value = Number(raw);
+      if (!Number.isFinite(value) || value < -100 || value > 100) {
+        message('Enter a number from -100 to 100.');
+        return;
+      }
+      message('');
+      scenario.percent = Math.round(value);
+      rangeInput.value = String(scenario.percent);
+      renderImpact();
+    };
+    numberInput.onchange = event => {
+      const raw = event.target.value;
+      const value = Number(raw);
+      const invalid = raw === '' || raw === '-' || !Number.isFinite(value) || value < -100 || value > 100;
+      update(raw);
+      if (invalid) message(raw === '' || raw === '-' ?
+        'Blank entry restored to the previous value.' :
+        'Out-of-range entry limited to -100% to +100%.');
+    };
+    root.querySelector('#mi-sim-reset').onclick = () => update(0);
+    renderImpact();
+  }
+
+  function records(source, mode) {
+    const result = [];
+    if (['revenue', 'gross', 'ratio', 'shortfall', 'cost-rate'].includes(mode)) source.rv.forEach(row => result.push({
+      type: 'Revenue', date: row.InvDate, entity: row.Client || 'Unknown', project: row.Project || '',
+      category: '', department: '', document: row.InvNo || '', description: row.Desc || '', amount: revenue(row)
+    }));
+    if (['cost', 'gross', 'shortfall', 'cost-rate'].includes(mode)) source.proj.forEach(row => result.push({
+      type: 'Project cost', date: row.PostDate, entity: row.ProjName || 'Unknown', project: row.ProjName || '',
+      category: row.CostEl || '', department: '', document: row.DocNo || '', description: row.Desc || '', amount: cost(row)
+    }));
+    if (mode === 'overhead' || mode === 'ratio') source.oh.forEach(row => result.push({
+      type: 'Overhead', date: row.PostDate, entity: row.DeptCode || 'Unknown', project: '',
+      category: row.CostEl || '', department: row.DeptCode || '', document: row.DocNo || '', description: row.Desc || '', amount: cost(row)
+    }));
+    return result;
+  }
+
+  function drillMode(label, chart, active) {
+    const text = (chart || label).toLowerCase();
+    if (text.includes('cost exceeding revenue')) return 'shortfall';
+    if (text.includes('overhead / revenue') || text.includes('overhead ratio')) return 'ratio';
+    if (text.includes('gross margin') || text.includes('gm %') || text.includes('negative contribution')) return 'gross';
+    if (text.includes('project cost') || text.includes('cost') || text.includes('cogs')) return 'cost';
+    if (text.includes('overhead')) return 'overhead';
+    if (text.includes('revenue') || text.includes('invoice') || text.includes('client')) return 'revenue';
+    return active === 'gross' ? 'gross' : active === 'cost' ? 'cost' :
+      active === 'overhead' ? 'overhead' : 'revenue';
+  }
+
+  function negativeProjects(source) {
+    const balances = new Map();
+    source.proj.forEach(row => balances.set(row.ProjName || 'Unknown', (balances.get(row.ProjName || 'Unknown') || 0) + cost(row)));
+    source.rv.forEach(row => balances.set(row.Project || 'Unknown', (balances.get(row.Project || 'Unknown') || 0) - revenue(row)));
+    return new Set([...balances].filter(([, value]) => value > 0).map(([name]) => name));
+  }
+
+  function drillFilter(rows, trigger) {
+    const chart = (trigger.dataset.chart || '').toLowerCase();
+    const label = trigger.dataset.label || '';
+    const heading = (trigger.dataset.label || '').toLowerCase();
+    const value = trigger.dataset.value || '';
+    if (chart.includes('monthly')) return rows.filter(row => (row.date || '').slice(0, 7) === label);
+    if (chart.includes('category')) return rows.filter(row => row.category === label);
+    if (chart.includes('department')) return rows.filter(row => row.department === label);
+    if (chart.includes('project') || chart.includes('cost exceeding')) return rows.filter(row => row.project === label);
+    if (chart.includes('client')) return rows.filter(row => row.type === 'Revenue' && row.entity === label);
+    if (chart.includes('transactions')) return rows.filter(row =>
+      row.entity + ' · ' + (row.description || row.document) === label);
+    if (heading === 'top client') return rows.filter(row => row.type === 'Revenue' && row.entity === value);
+    if (heading === 'top project' || heading.includes('gm project')) return rows.filter(row => row.project === value);
+    if (heading === 'largest category') return rows.filter(row => row.category === value);
+    return rows;
+  }
+
+  function showDrill(trigger) {
+    const { current, prior, period, priorPeriod, active } = snapshot();
+    const label = trigger.dataset.label || 'Selected figure';
+    const metric = trigger.dataset.miMetric || '';
+    const mode = metric === 'gross-rate' ? 'gross' :
+      metric === 'overhead-rate' ? 'ratio' :
+      metric === 'growth' || metric.startsWith('concentration') ? 'revenue' :
+      metric === 'exposure' ? 'shortfall' :
+      metric || drillMode(label, trigger.dataset.chart, active);
+    const priorOnly = !trigger.dataset.chart && /^prior\b/i.test(label);
+    const compare = !trigger.dataset.chart && /variance|growth|movement|change/i.test(label);
+    function selectedRows(source) {
+      const rows = records(source, mode);
+      if (metric === 'exposure') {
+        const negative = negativeProjects(source);
+        return rows.filter(row => negative.has(row.project));
+      }
+      if (metric.startsWith('concentration')) {
+        const count = metric === 'concentration5' ? 5 : 10;
+        const totals = new Map();
+        rows.forEach(row => totals.set(row.entity, (totals.get(row.entity) || 0) + row.amount));
+        const top = new Set([...totals].sort((a, b) => b[1] - a[1]).slice(0, count).map(([name]) => name));
+        return rows.filter(row => top.has(row.entity));
+      }
+      return drillFilter(rows, trigger);
+    }
+    const currentRows = selectedRows(current);
+    const priorRows = selectedRows(prior);
+    const displayRows = priorOnly ? priorRows.map(row => ({ ...row, period: 'Prior' })) :
+      [...currentRows.map(row => ({ ...row, period: 'Current' })),
+        ...(compare ? priorRows.map(row => ({ ...row, period: 'Prior' })) : [])];
+    const total = rows => mode === 'gross' ?
+      sum(rows, row => row.type === 'Revenue' ? row.amount : -row.amount) :
+      mode === 'shortfall' ?
+        sum(rows, row => row.type === 'Project cost' ? row.amount : -row.amount) :
+        sum(rows, row => row.amount);
+    const percentOf = (numerator, denominator) => denominator ? percent(numerator / denominator * 100) : 'N/A';
+    function rateParts(rows) {
+      const rev = sum(rows.filter(row => row.type === 'Revenue'), row => row.amount);
+      const expense = sum(rows.filter(row => row.type !== 'Revenue'), row => row.amount);
+      const numerator = metric === 'gross-rate' ? rev - expense : expense;
+      return { numerator, denominator: rev, value: rev ? numerator / rev * 100 : NaN };
+    }
+    const rateMetric = ['gross-rate', 'cost-rate', 'overhead-rate'].includes(metric);
+    let totalsHtml;
+    if (rateMetric) {
+      const now = rateParts(currentRows), before = rateParts(priorRows);
+      const rateLine = (name, dates, parts) =>
+        `<span>${name} ${esc(dates.start)} – ${esc(dates.end)}: <strong>${esc(percent(parts.value))}</strong> ` +
+        `(${esc(money(parts.numerator))} / ${esc(money(parts.denominator))})</span>`;
+      totalsHtml = rateLine('Current', period, now) + rateLine('Prior', priorPeriod, before) +
+        (compare ? `<span>Movement: <strong>${esc(Number.isFinite(now.value) && Number.isFinite(before.value) ?
+          (now.value - before.value).toFixed(1) + ' pp' : 'N/A')}</strong> (calculated before rounding)</span>` : '');
+    } else if (metric === 'growth') {
+      const now = total(currentRows), before = total(priorRows);
+      totalsHtml = `<span>Current: <strong>${esc(money(now))}</strong></span>` +
+        `<span>Prior: <strong>${esc(money(before))}</strong></span>` +
+        `<span>Growth: <strong>${esc(before ? percent((now - before) / before * 100) : 'N/A')}</strong></span>`;
+    } else if (metric.startsWith('concentration')) {
+      const allRevenue = sum(current.rv, revenue);
+      totalsHtml = `<span>Top ${metric === 'concentration5' ? 5 : 10} client revenue: <strong>${esc(money(total(currentRows)))}</strong></span>` +
+        `<span>Total revenue: <strong>${esc(money(allRevenue))}</strong></span>` +
+        `<span>Concentration: <strong>${esc(percentOf(total(currentRows), allRevenue))}</strong></span>`;
+    } else {
+      totalsHtml = `<span>Current ${esc(period.start)} – ${esc(period.end)}: <strong>${esc(money(total(currentRows)))}</strong></span>` +
+        `<span>Prior ${esc(priorPeriod.start)} – ${esc(priorPeriod.end)}: <strong>${esc(money(total(priorRows)))}</strong></span>` +
+        (compare ? `<span>Difference: <strong>${esc(money(total(currentRows) - total(priorRows)))}</strong></span>` : '');
+    }
+    const groups = new Map();
+    if (compare) {
+      for (const [periodName, rows] of [['Current', currentRows], ['Prior', priorRows]]) {
+        rows.forEach(row => {
+          const key = mode === 'cost' || mode === 'gross' || mode === 'shortfall' ? (row.project || row.entity) : row.entity;
+          const item = groups.get(key) || { current: 0, prior: 0 };
+          item[periodName.toLowerCase()] +=
+            ((mode === 'gross' && row.type === 'Project cost') || (mode === 'shortfall' && row.type === 'Revenue')) ?
+              -row.amount : row.amount;
+          groups.set(key, item);
+        });
+      }
+    }
+    const contributors = [...groups].sort((a, b) =>
+      Math.abs(b[1].current - b[1].prior) - Math.abs(a[1].current - a[1].prior)).slice(0, 10);
+    const host = document.getElementById('mi-drill-host');
+    if (!host) return;
+    host.innerHTML = `<dialog class="mi-drill-dialog" aria-labelledby="mi-drill-title"><div class="mi-drill-head">` +
+      `<div><span class="mi-label">SOURCE-RECORD DRILL-DOWN</span><h3 id="mi-drill-title">${esc(label)}</h3></div>` +
+      `<button type="button" class="mi-drill-close" aria-label="Close drill-down">×</button></div>` +
+      `<p class="mi-drill-explain">These source records reconcile the figure above where data is available. ` +
+      `They identify recorded contributors, not the business reasons for a change.</p>` +
+      `<div class="mi-drill-totals">${totalsHtml}</div>` +
+      (contributors.length ? `<h4>Largest recorded differences by ${mode === 'cost' || mode === 'gross' || mode === 'shortfall' ? 'project' : mode === 'overhead' ? 'department' : 'client'}</h4>` +
+        `<div class="mi-drill-table"><table><thead><tr><th>Name</th><th>Current</th><th>Prior</th><th>Difference</th></tr></thead><tbody>` +
+        contributors.map(([name, values]) => `<tr><td>${esc(name)}</td><td>${esc(money(values.current))}</td>` +
+          `<td>${esc(money(values.prior))}</td><td>${esc(money(values.current - values.prior))}</td></tr>`).join('') +
+        `</tbody></table></div>` : '') +
+      `<h4>Supporting transactions (${displayRows.length.toLocaleString()})</h4>` +
+      (displayRows.length ? `<div class="mi-drill-table"><table><thead><tr><th>Period / date</th><th>Record</th><th>Reference / description</th><th>Amount</th></tr></thead><tbody>` +
+        displayRows.sort((a, b) => Math.abs(b.amount) - Math.abs(a.amount)).slice(0, 40).map(row =>
+          `<tr><td>${esc(row.period)} · ${esc(row.date)}</td><td>${esc(row.type)} · ${esc(row.entity)}${row.project && row.project !== row.entity ? ' / ' + esc(row.project) : ''}</td>` +
+          `<td>${esc(row.document)} ${esc(row.description)}</td><td>${esc(money(row.amount))}</td></tr>`).join('') +
+        `</tbody></table></div>${displayRows.length > 40 ? '<p class="mi-sim-note">Showing the 40 largest records; totals include all matching records.</p>' : ''}` :
+        '<p class="mi-sim-note">No matching source records were found for this period.</p>') +
+      `</dialog>`;
+    const dialog = host.querySelector('dialog');
+    dialog.querySelector('.mi-drill-close').onclick = () => dialog.close();
+    dialog.onclick = event => { if (event.target === dialog) dialog.close(); };
+    dialog.onclose = () => { if (trigger.isConnected) trigger.focus(); };
+    dialog.showModal();
+  }
+
+  window.renderMarginsSensitivity = function () {
+    renderPanel();
+    const output = document.getElementById('mi-output');
+    if (!output) return;
+    const openFromEvent = event => {
+      const target = event.target.closest('[data-mi-drill]');
+      if (target && !document.querySelector('#mi-drill-host dialog[open]')) showDrill(target);
+    };
+    output.addEventListener('click', openFromEvent);
+    output.addEventListener('dblclick', openFromEvent);
+    output.addEventListener('keydown', event => {
+      const target = event.target.closest('[data-mi-drill]');
+      if (target && (event.key === 'Enter' || event.key === ' ')) {
+        event.preventDefault();
+        showDrill(target);
+      }
+    });
+  };
+})();
+</script>
+</body>
+<style id="mtcc-dark-theme-overrides">
+/* MTCC Finance Dashboard — dark theme typography and contrast overrides
+   Additive presentation-only layer. No layout, responsive, or script rules. */
+:root {
+  --font-sans: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.tabular-nums,
+[id*="total"], [id*="amount"], [id*="kpi"], [id*="revenue"], [id*="ebitda"],
+.dash-kpi-val, .ap-kpi-val, table td {
+  font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: -0.01em;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --bg-main: #0F172A;
+  --bg-card: #1E293B;
+  --bg-card-hover: #334155;
+  --text-primary: #F8FAFC;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+  --border-subtle: rgba(226, 232, 240, 0.12);
+  --border-strong: rgba(226, 232, 240, 0.25);
+}
+
+html[data-theme="dark-blue"] {
+  color-scheme: dark;
+  --bg-main: #020817;
+  --bg-card: #0F172A;
+  --bg-card-hover: #1E293B;
+  --text-primary: #FFFFFF;
+  --text-secondary: #E0F2FE;
+  --text-muted: #7DD3FC;
+  --border-subtle: rgba(56, 189, 248, 0.18);
+  --border-strong: rgba(56, 189, 248, 0.35);
+}
+
+html[data-theme="dark"] body,
+html[data-theme="dark-blue"] body {
+  background: var(--bg-main) !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"] header,
+html[data-theme="dark-blue"] header {
+  background: var(--bg-card) !important;
+  border-color: var(--border-subtle) !important;
+}
+html[data-theme="dark"] aside {
+  background: linear-gradient(180deg, var(--bg-card), var(--bg-main)) !important;
+  border-color: var(--border-subtle) !important;
+}
+html[data-theme="dark-blue"] aside {
+  background: linear-gradient(180deg, #0B1730, var(--bg-main)) !important;
+  border-color: var(--border-subtle) !important;
+}
+
+html[data-theme="dark"] .bg-white,
+html[data-theme="dark"] .dash-kpi-card,
+html[data-theme="dark"] .ap-kpi-card,
+html[data-theme="dark"] [id$="-card"],
+html[data-theme="dark"] [id$="-panel"],
+html[data-theme="dark-blue"] .bg-white,
+html[data-theme="dark-blue"] .dash-kpi-card,
+html[data-theme="dark-blue"] .ap-kpi-card,
+html[data-theme="dark-blue"] [id$="-card"],
+html[data-theme="dark-blue"] [id$="-panel"] {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-subtle) !important;
+}
+html[data-theme="dark-blue"] .bg-white,
+html[data-theme="dark-blue"] .dash-kpi-card,
+html[data-theme="dark-blue"] .ap-kpi-card {
+  box-shadow: 0 1px 14px -5px rgba(14, 165, 233, 0.16) !important;
+}
+
+html[data-theme="dark"] .bg-slate-50:not(body),
+html[data-theme="dark-blue"] .bg-slate-50:not(body) {
+  background-color: var(--bg-main) !important;
+}
+html[data-theme="dark"] .bg-slate-100,
+html[data-theme="dark"] .bg-slate-100\/60,
+html[data-theme="dark"] .bg-slate-100\/70,
+html[data-theme="dark-blue"] .bg-slate-100,
+html[data-theme="dark-blue"] .bg-slate-100\/60,
+html[data-theme="dark-blue"] .bg-slate-100\/70 {
+  background-color: var(--bg-card-hover) !important;
+}
+html[data-theme="dark"] .bg-gradient-to-r,
+html[data-theme="dark-blue"] .bg-gradient-to-r {
+  background: linear-gradient(135deg, var(--bg-card), var(--bg-main)) !important;
+  border-color: var(--border-subtle) !important;
+}
+html[data-theme="dark"] .border-slate-100,
+html[data-theme="dark"] .border-slate-200,
+html[data-theme="dark-blue"] .border-slate-100,
+html[data-theme="dark-blue"] .border-slate-200,
+html[data-theme="dark"] .divide-slate-100 > *,
+html[data-theme="dark-blue"] .divide-slate-100 > * {
+  border-color: var(--border-subtle) !important;
+}
+
+html[data-theme="dark"] .text-slate-900,
+html[data-theme="dark-blue"] .text-slate-900 {
+  color: var(--text-primary) !important;
+}
+html[data-theme="dark"] .text-slate-800,
+html[data-theme="dark"] .text-slate-700,
+html[data-theme="dark-blue"] .text-slate-800,
+html[data-theme="dark-blue"] .text-slate-700 {
+  color: var(--text-secondary) !important;
+}
+html[data-theme="dark"] .text-slate-600,
+html[data-theme="dark"] .text-slate-500,
+html[data-theme="dark"] .text-slate-400,
+html[data-theme="dark"] .text-gray-400,
+html[data-theme="dark"] .nav-group-header,
+html[data-theme="dark-blue"] .text-slate-600,
+html[data-theme="dark-blue"] .text-slate-500,
+html[data-theme="dark-blue"] .text-slate-400,
+html[data-theme="dark-blue"] .text-gray-400,
+html[data-theme="dark-blue"] .nav-group-header {
+  color: var(--text-muted) !important;
+}
+
+html[data-theme="dark"] table th,
+html[data-theme="dark-blue"] table th {
+  background-color: var(--bg-main) !important;
+  color: var(--text-primary) !important;
+  border-bottom-color: var(--border-strong) !important;
+}
+html[data-theme="dark"] table td,
+html[data-theme="dark-blue"] table td {
+  border-bottom-color: var(--border-subtle) !important;
+}
+html[data-theme="dark"] table tbody tr:hover,
+html[data-theme="dark-blue"] table tbody tr:hover {
+  background-color: var(--bg-card-hover) !important;
+}
+
+html[data-theme="dark"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]),
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea,
+html[data-theme="dark-blue"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]),
+html[data-theme="dark-blue"] select,
+html[data-theme="dark-blue"] textarea {
+  background-color: var(--bg-main) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-strong) !important;
+}
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder,
+html[data-theme="dark-blue"] input::placeholder,
+html[data-theme="dark-blue"] textarea::placeholder {
+  color: var(--text-muted) !important;
+  opacity: 0.8;
+}
+html[data-theme="dark"] .fz-dropdown,
+html[data-theme="dark"] .msfz-dropdown,
+html[data-theme="dark-blue"] .fz-dropdown,
+html[data-theme="dark-blue"] .msfz-dropdown {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-subtle) !important;
+}
+
+html[data-theme="dark"] .badge-overdue,
+html[data-theme="dark-blue"] .badge-overdue {
+  background-color: rgba(244, 63, 94, 0.2) !important;
+  color: #FF859B !important;
+  border: 1px solid rgba(244, 63, 94, 0.4) !important;
+}
+html[data-theme="dark"] .badge-due-soon,
+html[data-theme="dark-blue"] .badge-due-soon {
+  background-color: rgba(245, 158, 11, 0.2) !important;
+  color: #FCD34D !important;
+  border: 1px solid rgba(245, 158, 11, 0.4) !important;
+}
+html[data-theme="dark"] .badge-paid,
+html[data-theme="dark"] .badge-current,
+html[data-theme="dark-blue"] .badge-paid,
+html[data-theme="dark-blue"] .badge-current {
+  background-color: rgba(16, 185, 129, 0.2) !important;
+  color: #6EE7B7 !important;
+  border: 1px solid rgba(16, 185, 129, 0.4) !important;
+}
+
+</style>
 </html>
